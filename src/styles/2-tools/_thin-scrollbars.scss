@@ -1,0 +1,22 @@
+@use '../1-settings/colors' as *;
+
+@mixin thin-scrollbars {
+  &::-webkit-scrollbar {
+    width: 0.875rem;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray-200;
+    background-clip: content-box;
+    border: 0.25rem solid transparent;
+    border-radius: 100vw;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+}

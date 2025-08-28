@@ -1,0 +1,6 @@
+@use '../1-settings/focus' as *;
+
+@mixin default-focus-outline {
+  outline: $default-focus-outline;
+  outline-offset: $default-focus-outline-offset;
+}

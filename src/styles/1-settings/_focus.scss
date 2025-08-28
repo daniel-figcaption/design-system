@@ -1,0 +1,7 @@
+@use './colors' as *;
+
+$default-focus-outline-width: 2px;
+$default-focus-outline-color: $ew-blue-500;
+$default-focus-outline: $default-focus-outline-width solid $default-focus-outline-color;
+
+$default-focus-outline-offset: 2px;

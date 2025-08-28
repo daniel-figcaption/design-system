@@ -1,0 +1,21 @@
+@use './typography' as *;
+
+/*
+ *  Defaults for the standard custom properties that are helpful
+ *  to calculate padding and more.
+ */
+$default-control-border-width: 1px;
+$default-control-line-height: #{$default-line-height};
+$default-control-min-height: 2.75rem;
+
+$-min-height-minus-borders: calc(var(--control-min-height) - (var(--control-border-width) * 2));
+$default-control-calculated-px: calc(($-min-height-minus-borders - 1em) / 2);
+$default-control-calculated-py: calc(($-min-height-minus-borders - var(--control-line-height)) / 2);
+
+
+/*
+ *  $default-toggle-size
+ *  This is the default size (width and height) on the site
+ *  for radio buttons & checkboxes.
+ */
+$default-toggle-size: 1.25rem;

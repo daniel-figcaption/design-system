@@ -1,0 +1,17 @@
+@use '../1-settings/colors' as *;
+@use '../1-settings/typography' as *;
+
+:root {
+  color: $default-fg-color;
+  font-family: $default-font-family;
+  font-weight: $default-font-weight;
+  line-height: $default-line-height;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: inherit;
+}

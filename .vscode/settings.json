@@ -1,0 +1,6 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "scss": "scss",
+    "sass": "scss"
+  }
+}

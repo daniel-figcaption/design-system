@@ -1,0 +1,31 @@
+
+@layer atoms {
+  .c-icon {
+    --icon-size: 1em;
+    display: inline-block;
+    fill: currentColor;
+    height: var(--icon-size);
+    max-width: 100%;
+    width: var(--icon-size);
+
+    [fill] {
+      fill: currentColor;
+    }
+  }
+
+  .c-icon--xs {
+    --icon-size: 0.75em;
+  }
+
+  .c-icon--sm {
+    --icon-size: 0.875em;
+  }
+
+  .c-icon--lg {
+    --icon-size: 1.125em;
+  }
+
+  .c-icon--xl {
+    --icon-size: 1.25em;
+  }
+}

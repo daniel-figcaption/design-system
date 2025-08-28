@@ -1,0 +1,55 @@
+@use '@src/styles/shared' as *;
+
+.c-toggle-field {
+  --toggle-height: #{$default-toggle-size};
+  --label-line-height: #{$default-line-height};
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row;
+  gap: 0.625rem;
+}
+
+.c-toggle-field__control-wrap {
+  display: flex;
+  flex: none;
+}
+
+.c-toggle-field__text-wrap {
+  flex: 1;
+}
+
+.c-toggle-field__label {
+  color: $default-fg-color;
+  font-size: 0.875rem;
+  line-height: var(--label-line-height);
+  margin-top: calc((var(--toggle-height) - var(--label-line-height)) / 2);
+}
+
+.c-toggle-field__required-flag {
+  &::after {
+    color: $error-red;
+    content: '*';
+    margin-left: 0.25em;
+  }
+}
+
+.c-toggle-field__help-text {
+  color: $gray-500;
+  font-size: 0.75rem;
+  font-style: italic;
+  margin: 0;
+
+  .c-toggle-field__control-wrap + & {
+    margin-top: 0.125rem;
+  }
+}
+
+.c-toggle-field__error-message {
+  color: $error-red;
+  font-size: 0.75rem;
+  margin: 0;
+
+  .c-toggle-field__control-wrap + & {
+    margin-top: 0.125rem;
+  }
+}

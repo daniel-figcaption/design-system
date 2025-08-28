@@ -1,0 +1,56 @@
+@use '@src/styles/shared' as *;
+
+.c-field {
+  display: block;
+}
+
+.c-field__label {
+  color: $default-fg-color;
+  font-size: 1rem;
+}
+
+.c-field__required-flag {
+  &::after {
+    color: $error-red;
+    content: '*';
+    margin-left: 0.25em;
+  }
+}
+
+.c-field__control-wrap {
+  margin-top: 0.25rem;
+
+  .c-field__error-message + & {
+    margin-top: 0.125rem;
+  }
+
+  &:has(.c-field__toggle-field-set) {
+    // We're adding space to the control-wrap here because setting padding directly on the .o-toggle-field-set sometimes doesn't take precedence over the actual component.
+    padding: 0.25rem 0;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.c-field__help-text {
+  color: $gray-500;
+  font-size: 0.75rem;
+  font-style: italic;
+  margin: 0;
+
+  .c-field__control-wrap + & {
+    margin-top: 0.125rem;
+  }
+}
+
+.c-field__error-message {
+  color: $error-red;
+  font-size: 0.75rem;
+  margin: 0;
+
+  .c-field__control-wrap + & {
+    margin-top: 0.125rem;
+  }
+}
