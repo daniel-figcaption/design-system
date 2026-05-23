@@ -1,12 +1,11 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../CtaLink';
+import Component from '../CtaLink';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'test@example.com',
   variant: 'link',
   icon: 'envelope',
-  iconRelativeSize: 'lg',
-  iconVerticalNudge: 'down',
+  iconNudgeY: 'down',
   url: 'mailto:test@example.com',
 };
 

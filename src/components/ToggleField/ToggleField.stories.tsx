@@ -1,19 +1,18 @@
 import type { Meta } from '@storybook/react';
 import ToggleField from './ToggleField';
-import renderWithUniqueId from './lib/renderWithUniqueId';
 import FieldDecorator from '@sb/decorators/FieldDecorator/FieldDecorator';
 
 const meta: Meta<typeof ToggleField> = {
-  title: 'Components/Forms/ToggleField',
+  title: 'Components/Field/ToggleField',
   component: ToggleField,
   decorators: [FieldDecorator],
   tags: ['autodocs'],
-  render: renderWithUniqueId,
   args: {
     label: undefined,
-    control: undefined,
+    children: undefined,
     helpText: undefined,
     isRequired: false,
+    activeErrorMessage: undefined,
   },
   argTypes: {
     label: {
@@ -25,18 +24,14 @@ const meta: Meta<typeof ToggleField> = {
         },
       },
     },
-    control: {
+    children: {
       control: false,
-      description: 'The toggle component, e.g. a [Checkbox](./?path=/docs/components-forms-toggle-controls-checkbox--docs) component.',
+      description: 'The toggle element, e.g. a [Checkbox](./?path=/docs/components-forms-toggle-controls-checkbox--docs) component.',
       table: {
         type: {
           summary: null as any,
         },
       },
-    },
-    controlId: {
-      control: false,
-      description: 'The value of the `id` attribute on the control element. Is used to link the `<label>` element to the control.',
     },
     helpText: {
       control: 'text',

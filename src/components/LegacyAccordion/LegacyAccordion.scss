@@ -1,0 +1,93 @@
+@use '@src/styles/shared' as *;
+
+@layer molecules.c {
+  .c-legacy-accordion {
+    display: block;
+  }
+
+  .c-legacy-accordion__item {
+    display: block;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+    }
+  }
+
+  .c-legacy-accordion__section {
+    display: block;
+  }
+
+  .c-legacy-accordion__heading {
+    @include t-title-c;
+  }
+
+  .c-legacy-accordion__toggle-button {
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    font: inherit;
+    gap: 24px;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+
+    &:hover {
+      @include standard-underline;
+    }
+
+    &::before {
+      border-radius: inherit;
+      bottom: 0;
+      content: '';
+      left: -8px;
+      position: absolute;
+      right: -8px;
+      top: 0;
+    }
+
+    &:focus-visible {
+      outline: 0;
+
+      &::before {
+        @include default-focus-outline;
+      }
+    }
+
+    &::after {
+      --icon-size: 1.375rem;
+      background-color: currentColor;
+      content: '';
+      display: block;
+      flex: none;
+      height: var(--icon-size);
+      margin-left: auto;
+      mask-image: url("@src/assets/icons/plus.svg?url");
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      width: var(--icon-size);
+    }
+
+    &[aria-expanded="true"]::after {
+      mask-image: url("@src/assets/icons/minus.svg?url");
+    }
+  }
+
+  .c-legacy-accordion__panel {
+    display: block;
+
+    &::before {
+      content: '';
+      display: block;
+      margin-top: 8px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      margin-top: 12px;
+    }
+  }
+}

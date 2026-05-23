@@ -1,18 +1,17 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../Field';
-import Textbox from '@src/components/Controls/Textbox/Textbox';
+import Component from '../Field';
+import Textbox from '@src/components/Control/FullControl/Textbox/Textbox';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Email address',
-  control: (
+  children: (
     <Textbox 
       hasError
-      inputAttributes={{
+      valueElAttrs={{
         type: 'email',
         name: 'email_address',
         value: 'test@example.com',
       }}
-      className="c-field__control" 
     />
   ),
   helpText: 'Used to verify your account.',

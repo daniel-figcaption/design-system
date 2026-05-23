@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../CtaLink';
+import Component from '../CtaLink';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Read more',
   icon: 'arrow-right',
   iconPosition: 'after',

@@ -1,0 +1,46 @@
+@layer organisms.a {
+  .c-mini-form {
+    --mini-form-height: 2.75rem;
+    display: flex;
+    flex-flow: row;
+    gap: 0.5rem;
+    height: var(--mini-form-height);
+  }
+
+  .c-mini-form__field {
+    flex: 1 0 0;
+    position: relative;
+
+    &:focus-within {
+      z-index: 2;
+    }
+  }
+
+  .c-mini-form__control {
+    height: 100%;
+    min-height: 100%;
+  }
+
+  .c-mini-form__cta-wrap {
+    flex: 0 0 auto;
+    position: relative;
+
+    &:focus-within {
+      z-index: 2;
+    }
+  }
+
+  .c-mini-form__cta {
+    border-radius: 5px;
+    height: 100%;
+    min-height: 100%;
+    padding: 0.5rem 1rem;
+  }
+
+  .c-mini-form__icon-cta {
+    border-radius: 5px;
+    height: 100%;
+    min-height: 100%;
+    width: var(--mini-form-height);
+  }
+}

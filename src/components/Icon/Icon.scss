@@ -1,16 +1,10 @@
-
-@layer atoms {
+@layer atoms.a {
   .c-icon {
     --icon-size: 1em;
     display: inline-block;
-    fill: currentColor;
-    height: var(--icon-size);
+    height: round(var(--icon-size), 0.125rem);
     max-width: 100%;
-    width: var(--icon-size);
-
-    [fill] {
-      fill: currentColor;
-    }
+    width: round(var(--icon-size), 0.125rem);
   }
 
   .c-icon--xs {

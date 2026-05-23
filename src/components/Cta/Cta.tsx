@@ -1,33 +1,23 @@
 import clsx from "clsx";
-import * as React from "react";
 import "./Cta.scss";
-import Icon, { TIconName, TIconRelativeSize } from "../Icon/Icon";
+import Icon from "../Icon/Icon";
+import defineCtaComponent from "./lib/defineCtaComponent";
+import { TBaseCta } from "./lib/types";
 
-export type TProps = {
-  label: string;
-  variant?: 'primary' | 'secondary' | 'primary-outlined' | 'secondary-outlined' | 'link';
-  icon?: TIconName;
-  iconPosition?: 'before' | 'after';
-  iconRelativeSize?: TIconRelativeSize;
-  iconVerticalNudge?: 'default' | 'up' | 'down';
-  size?: 'xs' | 'sm' | 'base' | 'lg';
-  isFullWidth?: boolean;
-  className?: string;
-};
-
-type TCtaProps<T extends React.ElementType> = TProps & {
-  as?: T;
+export type TCtaComponent = TBaseCta<{
+  as?: React.ElementType;
   ctaProps?: Record<string, any>;
-};
+}>;
 
-const Cta = <T extends React.ElementType = 'button'>({
+const Cta: TCtaComponent = defineCtaComponent(({
   as,
   label,
   variant = 'primary',
   icon,
   iconPosition = 'before',
   iconRelativeSize = 'base',
-  iconVerticalNudge = 'default',
+  iconNudgeX = 'default',
+  iconNudgeY = 'default',
   size = 'base',
   isFullWidth = false,
   className,
@@ -35,10 +25,7 @@ const Cta = <T extends React.ElementType = 'button'>({
     className: ctaPropsClassName,
     ...ctaProps
   } = {},
-}:
-  TCtaProps<T>
-  & Omit<React.ComponentPropsWithoutRef<T>, keyof TCtaProps<T>>
-) => {
+}) => {
   const HtmlElement = as || 'button';
 
   const allClasses = clsx(
@@ -63,8 +50,12 @@ const Cta = <T extends React.ElementType = 'button'>({
     const allIconClasses = clsx(
       'c-cta__icon',
       {
-        'c-cta__icon--nudge-up': iconVerticalNudge === 'up',
-        'c-cta__icon--nudge-down': iconVerticalNudge === 'down',
+        'c-cta__icon--nudge-left': iconNudgeX === 'left',
+        'c-cta__icon--nudge-right': iconNudgeX === 'right',
+      },
+      {
+        'c-cta__icon--nudge-up': iconNudgeY === 'up',
+        'c-cta__icon--nudge-down': iconNudgeY === 'down',
       },
     );
 
@@ -90,6 +81,6 @@ const Cta = <T extends React.ElementType = 'button'>({
       </>
     </HtmlElement>
   );
-};
+});
 
 export default Cta;

@@ -1,12 +1,11 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../CtaButton';
+import Component from '../CtaButton';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Save & publish',
   variant: 'secondary',
   icon: 'publish',
   iconPosition: 'after',
-  iconRelativeSize: 'lg',
   isFullWidth: true,
 };
 

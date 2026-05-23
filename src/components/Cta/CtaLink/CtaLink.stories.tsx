@@ -89,3 +89,4 @@ export { default as DownloadLink } from './stories/DownloadLink';
 export { default as EmailLink } from './stories/EmailLink';
 export { default as BackLink } from './stories/BackLink';
 export { default as ExternalLink } from './stories/ExternalLink';
+export { default as Tag } from './stories/Tag';

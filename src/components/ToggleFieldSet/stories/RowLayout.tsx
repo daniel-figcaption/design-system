@@ -1,49 +1,34 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../ToggleFieldSet';
+import Component from '../ToggleFieldSet';
 import ToggleField from '@src/components/ToggleField/ToggleField';
-import Radio from '@src/components/ToggleControls/Radio/Radio';
+import Radio from '@src/components/Control/ToggleControl/Radio/Radio';
 
-export const props: TProps = {
-  fields: [
-    <ToggleField
-      label="Horror"
-      control={(
-        <Radio
-          inputAttributes={{
-            name: 'genre',
-            value: 'horror',
-            id: 'field_genres_horror',
-          }}
-        />
-      )}
-      controlId="field_genres_horror"
-    />,
-    <ToggleField
-      label="Fantasy"
-      control={(
-        <Radio
-          inputAttributes={{
-            name: 'genre',
-            value: 'fantasy',
-            id: 'field_genres_fantasy',
-          }}
-        />
-      )}
-      controlId="field_genres_fantasy"
-    />,
-    <ToggleField
-      label="Sci-fi"
-      control={(
-        <Radio
-          inputAttributes={{
-            name: 'genre',
-            value: 'scifi',
-            id: 'field_genres_scifi',
-          }}
-        />
-      )}
-      controlId="field_genres_scifi"
-    />,
+export const props: React.ComponentProps<typeof Component> = {
+  children: [
+    <ToggleField label="Horror">
+      <Radio
+        valueElAttrs={{
+          name: 'genre',
+          value: 'horror',
+        }}
+      />
+    </ToggleField>,
+    <ToggleField label="Fantasy">
+      <Radio
+        valueElAttrs={{
+          name: 'genre',
+          value: 'fantasy',
+        }}
+      />
+    </ToggleField>,
+    <ToggleField label="Sci-fi">
+      <Radio
+        valueElAttrs={{
+          name: 'genre',
+          value: 'scifi',
+        }}
+      />
+    </ToggleField>,
   ],
   layout: 'row',
 };

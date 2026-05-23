@@ -1,50 +1,37 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../ToggleFieldSet';
+import Component from '../ToggleFieldSet';
 import ToggleField from '@src/components/ToggleField/ToggleField';
-import Checkbox from '@src/components/ToggleControls/Checkbox/Checkbox';
+import Checkbox from '@src/components/Control/ToggleControl/Checkbox/Checkbox';
 
-export const props: TProps = {
-  fields: [
-    <ToggleField 
-      label="Social media" 
-      control={(
+export const props: React.ComponentProps<typeof Component> = {
+  children: (
+    <>
+      <ToggleField label="Social media">
         <Checkbox 
-          inputAttributes={{
+          valueElAttrs={{
             name: 'source',
             value: 'social_media',
-            id: 'field_source_social_media',
           }} 
         />
-      )} 
-      controlId="field_source_social_media"
-    />,
-    <ToggleField 
-      label="A search engine (e.g. Google)" 
-      control={(
+      </ToggleField>,
+      <ToggleField label="A search engine (e.g. Google)">
         <Checkbox 
-          inputAttributes={{
+          valueElAttrs={{
             name: 'source',
             value: 'search_engine',
-            id: 'field_source_search_engine',
           }} 
         />
-      )} 
-      controlId="field_source_search_engine"
-    />,
-    <ToggleField 
-      label="Word of mouth" 
-        control={(
-          <Checkbox 
-            inputAttributes={{
+      </ToggleField>,
+      <ToggleField label="Word of mouth">
+        <Checkbox 
+            valueElAttrs={{
             name: 'source',
             value: 'word_of_mouth',
-            id: 'field_source_word_of_mouth',
           }} 
         />
-      )} 
-      controlId="field_source_word_of_mouth"
-    />,
-  ],
+      </ToggleField>
+    </>
+  ),
   layout: 'stacked',
 };
 

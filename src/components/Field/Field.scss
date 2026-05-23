@@ -1,56 +1,69 @@
 @use '@src/styles/shared' as *;
 
-.c-field {
-  display: block;
-}
-
-.c-field__label {
-  color: $default-fg-color;
-  font-size: 1rem;
-}
-
-.c-field__required-flag {
-  &::after {
-    color: $error-red;
-    content: '*';
-    margin-left: 0.25em;
-  }
-}
-
-.c-field__control-wrap {
-  margin-top: 0.25rem;
-
-  .c-field__error-message + & {
-    margin-top: 0.125rem;
+@layer molecules.b {
+  .c-field {
+    display: block;
   }
 
-  &:has(.c-field__toggle-field-set) {
-    // We're adding space to the control-wrap here because setting padding directly on the .o-toggle-field-set sometimes doesn't take precedence over the actual component.
-    padding: 0.25rem 0;
+  .c-field__label {
+    color: $default-fg-color;
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
 
-    &:last-child {
-      padding-bottom: 0;
+  .c-field__required-flag {
+    &::after {
+      color: $error-red;
+      content: '*';
+      margin-left: 0.25em;
     }
   }
-}
 
-.c-field__help-text {
-  color: $gray-500;
-  font-size: 0.75rem;
-  font-style: italic;
-  margin: 0;
+  .c-field__core {
+    margin-top: 0.1875rem;
 
-  .c-field__control-wrap + & {
-    margin-top: 0.125rem;
+    .c-field__help-text + &,
+    .c-field__error-message + & {
+      margin-top: 0.3125rem;
+    }
+
+    &:has(.c-field__field-set) {
+      padding: 0.3125rem 0;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
   }
-}
 
-.c-field__error-message {
-  color: $error-red;
-  font-size: 0.75rem;
-  margin: 0;
+  .c-field__help-text {
+    color: $gray-500;
+    font-size: 0.75rem;
+    font-style: italic;
+    line-height: 1rem;
+    margin: 0.125rem 0;
 
-  .c-field__control-wrap + & {
-    margin-top: 0.125rem;
+    .c-field__core + & {
+      margin-top: 0.25rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .c-field__error-message {
+    color: $error-red;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    margin: 0.125rem 0;
+
+    .c-field__core + & {
+      margin-top: 0.25rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

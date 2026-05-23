@@ -1,33 +1,21 @@
-import * as React from 'react';
 import "./Icon.scss";
 import clsx from 'clsx';
+import { TBaseComponent } from '../lib/types';
+import { TIconName } from './lib/types';
+import getIconComponentByName from "./lib/getIconComponentByName";
+import defineComponent from "../lib/defineComponent";
 
-const icons = import.meta.glob<true, string, React.FC<React.SVGProps<SVGSVGElement>>>('../../assets/icons/*.svg', {
-  eager: true,
-  import: 'default',
-  query: '?react',
-});
-
-export const iconNames = Object.keys(icons).map(path =>
-  path.match(/([^/]+)\.svg$/)?.[1]
-) as string[];
-
-export type TIconName = typeof iconNames[number];
-
-export type TIconRelativeSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl';
-
-export type TProps = {
+export type TIconComponent = TBaseComponent<{
   iconName: TIconName;
   relativeSize?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
-  className?: string;
-};
+}>;
 
-const Icon: React.FC<TProps> = ({ 
+const Icon: TIconComponent = defineComponent(({ 
   iconName, 
   relativeSize = 'base', 
   className 
 }) => {
-  const IconSvg = icons[`../../assets/icons/${iconName}.svg`];
+  const IconSvg = getIconComponentByName(iconName);
 
   if (!IconSvg) {
     console.warn(`Icon "${iconName}" not found.`);
@@ -45,9 +33,7 @@ const Icon: React.FC<TProps> = ({
     className,
   );
 
-  console.log('...', IconSvg);
-
-  return <IconSvg className={allClasses} />;
-};
+  return <IconSvg className={allClasses} aria-hidden="true" />;
+});
 
 export default Icon;

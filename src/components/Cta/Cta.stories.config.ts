@@ -1,14 +1,17 @@
 import type { ArgTypes } from '@storybook/react';
-import type { TProps as TCtaProps } from './Cta';
-import { iconNames } from '../Icon/Icon';
+import iconNames from '../Icon/lib/iconNames';
+import Cta from './Cta';
 
-export const defaultProps: Partial<TCtaProps> = {
+type TProps = React.ComponentProps<typeof Cta>;
+
+export const defaultProps: Partial<TProps> = {
   label: undefined,
   variant: 'primary',
   icon: undefined,
   iconPosition: 'before',
   iconRelativeSize: 'base',
-  iconVerticalNudge: 'default',
+  iconNudgeX: 'default',
+  iconNudgeY: 'default',
   size: 'base',
   isFullWidth: false,
 };
@@ -16,7 +19,7 @@ export const defaultProps: Partial<TCtaProps> = {
 export const CTA_CATEGORY = 'Cta Properties';
 export const ICON_SUBCATEGORY = 'Icon Properties';
 
-export const argTypes: ArgTypes<TCtaProps> = {
+export const argTypes: ArgTypes<TProps> = {
   label: {
     control: 'text',
     description: 'The text to display for the button.',
@@ -67,7 +70,19 @@ export const argTypes: ArgTypes<TCtaProps> = {
       subcategory: ICON_SUBCATEGORY,
     },
   },
-  iconVerticalNudge: {
+  iconNudgeX: {
+    control: 'inline-radio',
+    description: 'If the icon doesn\'t appear horizontally snug with the text we can nudge it left or right.',
+    options: ['default', 'left', 'right'],
+    table: {
+      defaultValue: {
+        summary: 'default',
+      },
+      category: CTA_CATEGORY,
+      subcategory: ICON_SUBCATEGORY,
+    },
+  },
+  iconNudgeY: {
     control: 'inline-radio',
     description: 'If the icon doesn\'t appear vertically aligned with the text we can nudge it up or down.',
     options: ['default', 'up', 'down'],
@@ -97,13 +112,6 @@ export const argTypes: ArgTypes<TCtaProps> = {
       defaultValue: {
         summary: 'false',
       },
-      category: CTA_CATEGORY,
-    },
-  },
-  className: {
-    control: 'text',
-    description: 'Extra CSS classes to apply to the outer element.',
-    table: {
       category: CTA_CATEGORY,
     },
   },

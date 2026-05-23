@@ -1,0 +1,10 @@
+@use '../1-settings/colors' as *;
+@use '../1-settings/typography' as *;
+
+@layer elements {
+  input[type="submit"],
+  input[type="reset"],
+  button {
+    cursor: pointer;
+  }
+}

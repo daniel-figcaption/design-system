@@ -1,42 +1,35 @@
 import type { Meta } from '@storybook/react';
 import Field from './Field';
-import renderWithUniqueId from './lib/renderWithUniqueId';
 import FieldDecorator from '@sb/decorators/FieldDecorator/FieldDecorator';
 
 const meta: Meta<typeof Field> = {
-  title: 'Components/Forms/Field',
+  title: 'Components/Field/Field',
   component: Field,
   decorators: [FieldDecorator],
   tags: ['autodocs'],
   args: {
     label: undefined,
-    control: undefined,
-    controlId: undefined,
     isRequired: false,
     helpText: undefined,
     helpTextPosition: 'after',
     activeErrorMessage: undefined,
     errorMessagePosition: 'after',
     className: undefined,
+    children: undefined,
   },
-  render: renderWithUniqueId,
   argTypes: {
     label: {
       control: 'text',
       description: 'The text label to display above the control.',
     },
-    control: {
+    children: {
       control: false,
-      description: 'The control component, e.g. a [Textbox](./?path=/docs/components-forms-controls-textbox--docs) component.',
+      description: 'The full control element, e.g. a [Textbox](./?path=/docs/components-forms-controls-textbox--docs) component.',
       table: {
         type: {
           summary: null as any,
         },
       },
-    },
-    controlId: {
-      control: false,
-      description: 'The value of the `id` attribute on the control element. Is used to link the `<label>` element to the control.',
     },
     helpText: {
       control: 'text',

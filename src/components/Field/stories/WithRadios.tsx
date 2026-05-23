@@ -1,14 +1,13 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../Field';
+import Component from '../Field';
 import ToggleFieldSet from '@src/components/ToggleFieldSet/ToggleFieldSet';
 import { props as rowLayoutProps } from '@src/components/ToggleFieldSet/stories/RowLayout';
 
-export const props: TProps = {
-  label: 'Gender',
-  control: (
+export const props: React.ComponentProps<typeof Component> = {
+  label: 'Genre',
+  children: (
     <ToggleFieldSet 
       {...rowLayoutProps}
-      className="c-field__toggle-field-set" 
     />
   ),
   helpTextPosition: 'before',

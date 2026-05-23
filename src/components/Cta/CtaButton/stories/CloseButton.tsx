@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../CtaButton';
+import Component from '../CtaButton';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Close',
   variant: 'link',
   icon: 'x',

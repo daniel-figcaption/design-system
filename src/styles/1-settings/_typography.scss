@@ -4,4 +4,12 @@ $default-font-family: $noto-sans-font-family;
 
 $default-font-weight: 400;
 
-$default-line-height: 1.25em; // Always define in em units.
+/*
+ * We define line-height in a unitless manner first.
+ * We then also convert this to an em version.
+ * We do this because:
+ *   - We need a unitless version to cascade down correctly from :root.
+ *   - We need an em version for use in calc() on certain elements.
+ */
+$default-line-height-unitless: 1.25;
+$default-line-height-em: #{$default-line-height-unitless}em;

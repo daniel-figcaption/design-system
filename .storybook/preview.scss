@@ -1,3 +1,5 @@
+@use '@src/styles/shared' as *;
+
 /*
  * Expand #storybook-root to cover the full canvas.
  * This allows us better control positioning the element.
@@ -12,5 +14,13 @@
 
   #storybook-root {
     flex: 1;
+  }
+}
+
+.docs-story {
+  @include root-styles;
+
+  & > * {
+    scrollbar-gutter: stable;
   }
 }

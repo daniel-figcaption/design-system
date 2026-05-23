@@ -1,31 +1,37 @@
 import clsx from "clsx";
-import React from "react";
 import "./Field.scss";
-import { TControl } from "../Controls/lib/types";
+import useUniqueId from "../lib/hooks/useUniqueId";
+import { _FieldWithControl, _FieldWithFieldset } from "./lib/FieldHelper";
+import { TBaseComponent } from "../lib/types";
+import defineComponent from "../lib/defineComponent";
+import isElementOfType from "../lib/isElementOfType";
+import ToggleFieldSet from "../ToggleFieldSet/ToggleFieldSet";
+import assertAsOneOfBase from "../lib/assertAsOneOfBase";
+import FullControlBrand from "../Control/FullControl/FullControlBrand";
+import isElementOfBase from "../lib/isElementOfBase";
 
-export type TProps = {
+export type TFieldComponent = TBaseComponent<{
   label: string;
-  control: React.ReactElement<React.ComponentProps<TControl>>;
-  controlId?: string;
   isRequired?: boolean;
   helpText?: string;
   helpTextPosition?: 'before' | 'after';
   activeErrorMessage?: string;
   errorMessagePosition?: 'before' | 'after';
-  className?: string;
-};
+  children: React.ReactElement; // TElement<TBaseFullControl | TToggleFieldSetComponent>
+}>;
 
-const Field: React.FC<TProps> = ({
+const Field: TFieldComponent = defineComponent(({
   label,
-  control,
-  controlId,
   isRequired = false,
   helpText,
   helpTextPosition = 'after',
   activeErrorMessage,
   errorMessagePosition = 'after',
   className,
+  children
 }) => {
+  const core = assertAsOneOfBase(children);
+
   const allClasses = clsx(
     'c-field',
     {
@@ -35,45 +41,72 @@ const Field: React.FC<TProps> = ({
     className,
   );
 
-  const HelpText = () => (
-    <p className="c-field__help-text">
+  const helpTextId = useUniqueId('help');
+  const errorMessageId = useUniqueId('error');
+
+  const ariaDescribedBy = clsx({
+    [helpTextId]: helpText,
+    [errorMessageId]: activeErrorMessage,
+  }) || undefined;
+
+  const requiredFlagEl = isRequired ? (
+    <span className="c-field__required-flag">
+      <span className="visually-hidden">(is required)</span>
+    </span>
+  ) : undefined;
+
+  const helpTextContent = helpText ? (
+    <p className="c-field__help-text" id={helpTextId}>
       {helpText}
     </p>
-  );
+  ) : undefined;
 
-  const ErrorMessage = () => (
-    <p className="c-field__error-message">
+  const errorMessageContent = activeErrorMessage ? (
+    <p className="c-field__error-message" id={errorMessageId}>
       {activeErrorMessage}
     </p>
+  ) : undefined;
+
+  const preContent = (
+    <>
+      {helpTextPosition === 'before' && helpTextContent}
+      {errorMessagePosition === 'before' && errorMessageContent}
+    </>
   );
 
-  return (
-    <div className={allClasses}>
-      <label className="c-field__label" htmlFor={controlId}>
-        {label}
-        {isRequired && (
-          <span className="c-field__required-flag">
-            <span className="visually-hidden">(is required)</span>
-          </span>
-        )}
-      </label>
-      {helpText && helpTextPosition === 'before' && (
-        <HelpText />
-      )}
-      {activeErrorMessage && errorMessagePosition === 'before' && (
-        <ErrorMessage />
-      )}
-      <div className="c-field__control-wrap">
-        {control}
-      </div>
-      {activeErrorMessage && errorMessagePosition === 'after' && (
-        <ErrorMessage />
-      )}
-      {helpText && helpTextPosition === 'after' && (
-        <HelpText />
-      )}
-    </div>
+  const postContent = (
+    <>
+      {helpTextPosition === 'after' && helpTextContent}
+      {errorMessagePosition === 'after' && errorMessageContent}
+    </>
   );
-};
+
+  if (isElementOfBase(core, FullControlBrand)) {
+    return (
+      <_FieldWithControl
+        control={core}
+        allClasses={allClasses}
+        ariaDescribedBy={ariaDescribedBy}
+        label={label}
+        requiredFlagEl={requiredFlagEl}
+        preContent={preContent}
+        postContent={postContent}
+      />
+    );
+  } else if (isElementOfType(core, ToggleFieldSet)) {
+    return (
+      <_FieldWithFieldset
+        fieldset={core}
+        allClasses={allClasses}
+        ariaDescribedBy={ariaDescribedBy}
+        label={label}
+        isRequired={isRequired}
+        requiredFlagEl={requiredFlagEl}
+        preContent={preContent}
+        postContent={postContent}
+      />
+    );
+  }
+});
 
 export default Field;

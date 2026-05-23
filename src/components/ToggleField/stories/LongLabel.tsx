@@ -1,12 +1,12 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../ToggleField';
-import Checkbox from '@src/components/ToggleControls/Checkbox/Checkbox';
+import Component from '../ToggleField';
+import Checkbox from '@src/components/Control/ToggleControl/Checkbox/Checkbox';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis est, tempor finibus volutpat non, tempus eu erat. Vivamus ut erat varius, consequat tellus ac, scelerisque mi. Mauris molestie odio sit amet porta aliquam. Phasellus aliquet facilisis pretium. Integer ut quam elementum lectus viverra pharetra.',
-  control: (
+  children: (
     <Checkbox
-      inputAttributes={{
+      valueElAttrs={{
         name: 'terms_and_conditions',
       }} 
     />

@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../Icon';
+import Component from '../Icon';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   iconName: 'facebook',
 };
 

@@ -1,18 +1,17 @@
-.o-toggle-field-set {
-  border: 0;
-  display: flex;
-  list-style: none;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 0.6875rem 1.5rem;
-  margin: 0;
-  padding: 0;
-}
+@layer molecules.a {
+  .c-toggle-field-set {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.6875rem 1.5rem;
+  }
 
-.o-toggle-field-set--row {
-  flex-direction: row;
-}
+  .c-toggle-field-set--row {
+    flex-direction: row;
+  }
 
-.o-toggle-field-set__item {
-  display: block;
+  .c-toggle-field-set__item {
+    display: block;
+  }
 }

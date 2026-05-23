@@ -1,0 +1,11 @@
+@use '../1-settings/colors' as *;
+@use '../2-tools/standard-underline' as *;
+
+@mixin text-link {
+  @include standard-underline;
+  color: $ew-blue-500;
+
+  &:hover {
+    color: $ew-blue-700;
+  }
+}

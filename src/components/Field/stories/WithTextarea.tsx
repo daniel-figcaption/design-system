@@ -1,18 +1,17 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../Field';
-import Textarea from '@src/components/Controls/Textarea/Textarea';
+import Component from '../Field';
+import Textarea from '@src/components/Control/FullControl/Textarea/Textarea';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Comments',
-  control: (
+  children: (
     <Textarea
       rows={5}
-      textareaAttributes={{
+      valueElAttrs={{
         id: 'field_comments',
       }}
     />
   ),
-  controlId: 'field_comments',
   helpText: 'Comments will appear publicly and anonymously.',
 };
 

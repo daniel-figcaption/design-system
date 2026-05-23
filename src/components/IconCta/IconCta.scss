@@ -1,0 +1,150 @@
+@use '@src/styles/shared' as *;
+
+@layer atoms.b {
+  .c-icon-cta {
+    --size-factor: 2em;
+    align-items: center;
+    background-color: $ew-blue-500;
+    border-radius: 100vw;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.125rem;
+    height: var(--size-factor);
+    justify-content: center;
+    position: relative;
+    transition: background-color 200ms, border-color 200ms, color 200ms;
+    width: var(--size-factor);
+
+    &:hover {
+      background-color: $ew-blue-600;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+
+  /* Sizes */
+
+  .c-icon-cta--sm {
+    font-size: 0.875rem;
+  }
+
+  .c-icon-cta--lg {
+    font-size: 1.5rem;
+  }
+
+  .c-icon-cta--xl {
+    font-size: 2rem;
+  }
+
+
+  /* Variants */
+
+  .c-icon-cta--bare {
+    background-color: transparent;
+    border-radius: 0;
+    color: $ew-blue-500;
+    height: auto;
+    width: auto;
+
+    &::before,
+    &::after {
+      border-radius: 100vw;
+      content: '';
+      display: block;
+      height: var(--size-factor);
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--size-factor);
+    }
+
+    &::before {
+      // The clickable area
+      background-color: currentColor;
+      opacity: 0;
+      transition: opacity 200ms;
+    }
+
+    &::after {
+      // The focus ring
+      pointer-events: none;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: $ew-blue-600;
+    }
+
+    &:focus-visible {
+      outline: 0;
+
+      &::after {
+        @include default-focus-outline;
+      }
+    }
+
+    &:hover::before {
+      opacity: 0.08;
+    }
+  }
+
+  .c-icon-cta--secondary {
+    background-color: $ew-green-500;
+
+    &:hover {
+      background-color: $ew-green-600;
+    }
+  }
+
+  .c-icon-cta--primary-outlined {
+    background-color: transparent;
+    border: 2px solid $ew-blue-500;
+    color: $ew-blue-500;
+
+    &:hover {
+      background-color: $ew-blue-600;
+      border-color: $ew-blue-600;
+      color: $white;
+    }
+  }
+
+  .c-icon-cta--secondary-outlined {
+    background-color: transparent;
+    border: 2px solid $ew-green-500;
+    color: $ew-green-500;
+
+    &:hover {
+      background-color: $ew-green-600;
+      border-color: $ew-green-600;
+      color: $white;
+    }
+  }
+
+
+  .c-icon-cta__icon {
+    transform: none;
+  }
+
+  .c-icon-cta__icon--nudge-left {
+    transform: translateX(-0.0625em);
+  }
+
+  .c-icon-cta__icon--nudge-right {
+    transform: translateX(0.0625em);
+  }
+
+  .c-icon-cta__icon--nudge-up {
+    transform: translateY(-0.0625em);
+  }
+
+  .c-icon-cta__icon--nudge-down {
+    transform: translateY(0.0625em);
+  }
+}

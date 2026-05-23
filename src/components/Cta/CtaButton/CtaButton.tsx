@@ -1,12 +1,14 @@
-import Cta, { TProps as TCtaProps } from '../Cta';
+import Cta from '../Cta';
 import '../Cta.scss';
+import defineCtaComponent from '../lib/defineCtaComponent';
+import { TBaseCta } from '../lib/types';
 
-export type TProps = TCtaProps & {
+export type TCtaButtonComponent = TBaseCta<{
   buttonType?: 'button' | 'submit' | 'reset';
   buttonAttributes?: React.ButtonHTMLAttributes<HTMLButtonElement>;
-};
+}>;
 
-const CtaButton: React.FC<TProps> = ({
+const CtaButton: TCtaButtonComponent = defineCtaComponent(({
   buttonType = 'button',
   buttonAttributes,
   ...props
@@ -21,6 +23,6 @@ const CtaButton: React.FC<TProps> = ({
       }}
     />
   );
-};
+});
 
 export default CtaButton;

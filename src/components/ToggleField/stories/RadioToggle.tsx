@@ -1,17 +1,16 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../ToggleField';
-import Radio from '@src/components/ToggleControls/Radio/Radio';
+import Component from '../ToggleField';
+import Radio from '@src/components/Control/ToggleControl/Radio/Radio';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Male',
-  control: (
+  children: (
     <Radio
-      inputAttributes={{
+      valueElAttrs={{
         name: 'gender',
       }} 
     />
   ),
-  controlId: 'field_male',
 };
 
 const Story: StoryObj<typeof Component> = {

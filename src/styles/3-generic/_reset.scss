@@ -1,1 +1,91 @@
-@forward 'normalize.css';
+/*
+ * reset.scss
+ *
+ * This reset aims to strip back all the browser styles to something resembling a blank slate.
+ *
+ * The goal here is to: 
+ *  - Strip back all elements to appear like unstyled div or span elements.
+ *  - Correct quirky browser default styles in a way that brings them closer to
+ *  - Create a raw, blank canvas that cries out for classes to be added.
+ *
+ * NOT the goal:
+ *   - NOT to create an accessible default. It should look ugly!
+ *   - NOT to introduce pleasing default styles (e.g. a nice default line-height).
+ *
+ */
+
+@layer reset {
+  *, 
+  *::before, 
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+
+  html {
+    line-height: 1;
+  }
+
+  img, 
+  picture,
+  video, 
+  canvas, 
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  fieldset {
+    border: 0;
+  }
+
+  input, 
+  button, 
+  textarea, 
+  select {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: inherit;
+    display: block;
+    font: inherit;
+    text-align: inherit;
+  }
+
+  h1, 
+  h2, 
+  h3, 
+  h4, 
+  h5, 
+  h6 {
+    font: inherit;
+  }
+
+  strong,
+  b {
+    font-weight: inherit;
+  }
+
+  em,
+  i {
+    font-style: inherit;
+  }
+
+  li {
+    display: block;
+
+    &::marker {
+      font-size: 0;
+    }
+  }
+}

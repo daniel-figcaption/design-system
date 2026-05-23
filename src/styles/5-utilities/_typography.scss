@@ -1,0 +1,7 @@
+@use '../2-tools/typography' as *;
+
+@layer utilities {
+  .t-body {
+    @include t-body;
+  }
+}

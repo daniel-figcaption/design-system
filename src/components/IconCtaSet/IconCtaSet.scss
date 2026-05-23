@@ -1,0 +1,24 @@
+@layer molecules.a {
+  .c-icon-cta-set {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.75rem;
+  }
+
+  .c-icon-cta-set__item {
+    &:has(.c-icon-cta--bare) {
+      &:not(:first-child) {
+        padding-left: 0.25rem;
+      }
+
+      &:not(:last-child) {
+        padding-right: 0.25rem;
+      }
+    }
+
+    &:has(.c-cta--full-width) {
+      width: 100%;
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../CtaSet';
+import Component from '../CtaSet';
 import CtaLink from '@src/components/Cta/CtaLink/CtaLink';
 
-export const props: TProps = {
-  ctas: [
+export const props: React.ComponentProps<typeof Component> = {
+  children: [
     <CtaLink
       label="Facebook"
       variant="link"

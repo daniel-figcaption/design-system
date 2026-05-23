@@ -1,23 +1,21 @@
 import type { Meta } from '@storybook/react';
 import ToggleFieldSet from './ToggleFieldSet';
-import ToggleField from '../ToggleField/ToggleField';
-import Radio from '../ToggleControls/Radio/Radio';
 import FieldDecorator from '@sb/decorators/FieldDecorator/FieldDecorator';
 
 const meta: Meta<typeof ToggleFieldSet> = {
-  title: 'Components/Forms/ToggleFieldSet',
+  title: 'Components/ToggleFieldSet',
   component: ToggleFieldSet,
   decorators: [FieldDecorator],
   tags: ['autodocs'],
   args: {
-    fields: [],
+    children: [],
     layout: 'stacked',
     className: undefined,
   },
   argTypes: {
-    fields: {
+    children: {
       control: false,
-      description: 'An array of [ToggleField](./?path=/docs/components-forms-togglefield--docs) components.',
+      description: 'An array of [ToggleField](./?path=/docs/components-field-togglefield--docs) components.',
       table: {
         type: {
           summary: 'array',

@@ -9,18 +9,13 @@ const meta: Meta<typeof CtaSet> = {
   },
   tags: ['autodocs'],
   args: {
-    ctas: [],
+    children: [],
     className: undefined,
   },
   argTypes: {
-    ctas: {
+    children: {
       control: false,
-      description: 'An array of [CtaLink](./?path=/docs/components-cta-ctalink--docs) or [CtaButton](./?path=/docs/components-cta-ctabutton--docs) components.',
-      table: {
-        type: {
-          summary: 'array',
-        },
-      },
+      description: 'A set of [CtaLink](./?path=/docs/components-cta-ctalink--docs) or [CtaButton](./?path=/docs/components-cta-ctabutton--docs) components.',
     },
     className: {
       control: 'text',

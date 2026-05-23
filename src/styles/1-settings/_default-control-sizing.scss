@@ -5,7 +5,7 @@
  *  to calculate padding and more.
  */
 $default-control-border-width: 1px;
-$default-control-line-height: #{$default-line-height};
+$default-control-line-height: #{$default-line-height-em};
 $default-control-min-height: 2.75rem;
 
 $-min-height-minus-borders: calc(var(--control-min-height) - (var(--control-border-width) * 2));

@@ -1,14 +1,19 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../Field';
-import Select from '@src/components/Controls/Select/Select';
-import { props as typicalSelectProps } from '@src/components/Controls/Select/stories/Typical';
+import Component from '../Field';
+import Select from '@src/components/Control/FullControl/Select/Select';
+import { props as typicalSelectProps } from '@src/components/Control/FullControl/Select/stories/Typical';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Province',
-  control: (
-    <Select {...typicalSelectProps} />
+  children: (
+    <Select 
+      {...typicalSelectProps} 
+      valueElAttrs={{
+        ...(typicalSelectProps.valueElAttrs || {}),
+        id: 'field_province',
+      }}
+    />
   ),
-  controlId: 'field_province',
 };
 
 const Story: StoryObj<typeof Component> = {

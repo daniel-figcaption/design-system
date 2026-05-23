@@ -1,13 +1,15 @@
-import Cta, { TProps as TCtaProps } from '../Cta';
+import Cta from '../Cta';
 import '../Cta.scss';
+import defineCtaComponent from '../lib/defineCtaComponent';
+import { TBaseCta } from '../lib/types';
 
-export type TProps = TCtaProps & {
+export type TCtaLinkComponent = TBaseCta<{
   url: string;
   openInNewTab?: boolean;
   aAttributes?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
-};
+}>;
 
-const CtaLink: React.FC<TProps> = ({
+const CtaLink: TCtaLinkComponent = defineCtaComponent(({
   url,
   openInNewTab,
   aAttributes,
@@ -25,6 +27,6 @@ const CtaLink: React.FC<TProps> = ({
       }}
     />
   );
-};
+});
 
 export default CtaLink;

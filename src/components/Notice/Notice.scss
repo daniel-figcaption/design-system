@@ -1,0 +1,8 @@
+@use '@src/styles/shared' as *;
+
+@layer molecules.b {
+  .c-notice {
+    background-color: $gray-100;
+    padding: 20px 0;
+  }
+}

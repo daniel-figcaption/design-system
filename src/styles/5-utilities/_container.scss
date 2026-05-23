@@ -1,0 +1,7 @@
+@use '../2-tools/container' as *;
+
+@layer utilities {
+  .u-container {
+    @include container;
+  }
+}

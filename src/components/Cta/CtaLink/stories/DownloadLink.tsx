@@ -1,10 +1,10 @@
 import type { StoryObj } from '@storybook/react';
-import Component, { TProps } from '../CtaLink';
+import Component from '../CtaLink';
 
-export const props: TProps = {
+export const props: React.ComponentProps<typeof Component> = {
   label: 'Download as PDF',
   variant: 'primary-outlined',
-  icon: 'pdf',
+  icon: 'download-file',
   iconPosition: 'after',
   size: 'sm',
   url: '#download',

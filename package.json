@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "storybook:deploy": "chromatic --project-token=<your-project-token>",
+    "chromatic": "npx chromatic --project-token=chpt_ba4823a7c6657c9"
   },
   "keywords": [],
   "author": "",
