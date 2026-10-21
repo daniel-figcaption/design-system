@@ -1,0 +1,12 @@
+/*
+ * _root.scss
+ *
+ * The root styles for a traditional frontend.
+ */
+@use '@src/styles/2-mixins/root-styles' as *;
+
+@layer generic {
+  html {
+    @include root-styles;
+  }
+}

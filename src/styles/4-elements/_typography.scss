@@ -1,7 +1,0 @@
-@use '../2-tools/root-styles' as *;
-
-@layer elements {
-  :root {
-    @include root-styles;
-  }
-}

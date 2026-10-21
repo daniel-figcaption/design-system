@@ -1,0 +1,19 @@
+/*
+ * variables.module.scss
+ * 
+ * Variables used in both SASS and JS, for use in the Storybook preview rendering.
+ */
+
+@use 'sass:string';
+
+/*
+ * The root element can be either #storybook-root or .docs-story.
+ *
+ * #storybook-root => Where stories are rendered in an iframe (single story pages).
+ * .docs-story => Where stories are rendered inline (docs page).
+ */
+$sb-preview-root: ':is(#storybook-root, .docs-story)';
+
+:export {
+  sbPreviewRoot: $sb-preview-root; 
+}

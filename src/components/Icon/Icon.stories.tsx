@@ -1,48 +1,30 @@
 import type { Meta } from '@storybook/react';
 import Icon from './Icon';
-import iconNames from './lib/iconNames';
+import { iconNames, iconRelativeSizes } from './lib/enums';
+import createPartialMeta from '../lib/storybook/createPartialMeta';
 
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icon',
-  component: Icon,
-  parameters: {
+  ...createPartialMeta({
+    component: Icon,
     layout: 'centered',
-  },
-  tags: ['autodocs'],
-  args: {
-    iconName: undefined,
-    relativeSize: 'base',
-    className: undefined,
-  },
-  argTypes: {
-    iconName: {
-      control: 'select',
-      description: 'The name of the icon to display.',
-      options: iconNames,
-      table: {
-        type: {
-          summary: 'string',
-        },
+    fields: {
+      iconName: {
+        p1_typeSafeDefaultValue: '',
+        p2_valueTypeLabel: 'string',
+        p3_description: 'The name of the icon to display.',
+        p4_storybookControlType: 'select',
+        p5_controlOptions: iconNames,
+      },
+      relativeSize: {
+        p1_typeSafeDefaultValue: 'base',
+        p2_valueTypeLabel: 'string',
+        p3_description: 'The relative size of the icon with respect to the surrounding text.',
+        p4_storybookControlType: 'select',
+        p5_controlOptions: iconRelativeSizes,
       },
     },
-    relativeSize: {
-      control: 'select',
-      description: 'The relative size of the icon with respect to the surrounding text.',
-      options: ['xs', 'sm', 'base', 'lg', 'xl'],
-      table: {
-        defaultValue: {
-          summary: 'base',
-        },
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    className: {
-      control: 'text',
-      description: 'Extra CSS classes to apply to the outer element.',
-    },
-  },
+  }),
 };
 
 export default meta;

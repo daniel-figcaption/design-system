@@ -1,0 +1,35 @@
+@use '../1-settings/breakpoints' as *;
+@use '../1-settings/colors' as *;
+@use '../1-settings/container-and-gutters' as *;
+@use '../1-settings/typography' as *;
+
+@mixin root-styles {
+  /*
+   * These are typography styles 
+   */
+  color: $default-fg-color;
+  font-family: $default-font-family;
+  font-weight: $default-font-weight;
+  line-height: $default-line-height-unitless;
+
+  /*
+   * Although this is used mostly in the @container mixin and 
+   * utility class, it could fasibly be tapped into from any 
+   * piece of code used for styling. 
+   * Unlike the container-max-width, this value usually changes
+   * across screen sizes which is why it appear as a CSS variable
+   * and not just as a SASS variable.
+   */
+  --min-edge-gap: #{$min-edge-gap-sm};
+
+  @media (min-width: $bp-sm) {
+    --min-edge-gap: #{$min-edge-gap-lg};
+  }
+
+  /*
+   * Allow transitioning/animating to auto.
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+  }
+}

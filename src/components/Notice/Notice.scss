@@ -1,8 +1,78 @@
-@use '@src/styles/shared' as *;
+@use '@src/styles/tools' as *;
 
-@layer molecules.b {
+@layer components {
   .c-notice {
     background-color: $gray-100;
-    padding: 20px 0;
+    padding: 0 20px;
+    @include f-clear-fix;
+  }
+
+  /*
+   * We're using this padding approach because this component can
+   * be containerized or not containerized depending on the context, 
+   * all on the same project. Eliminating a permanent container
+   * wrapper element makes it simpler to swap this styling.
+   */
+  .c-notice--containerized {
+    @include u-px-container;
+  }
+
+  /*
+   * We're using this button-wrap element to separate the often
+   * complex positioning logic from the button's own complex
+   * styling and variant styling.
+   */
+  .c-notice__button-wrap {
+    align-items: center;
+    float: right;
+    display: flex;
+    flex-flow: row;
+    margin: 18px 0 18px 20px;
+    /*
+     * Let's set a min-height equal to the line-height of the
+     * rich text. That way, it will look vertically aligned when
+     * a single line of text is displayed.
+     */
+    min-height: 1.3125rem;
+
+    @media (min-width: $bp-sm) {
+      min-height: 1.5rem;
+    }
+  }
+
+  .c-notice__content {
+    flex: 1;
+    /*
+     * We're setting the X-axis padding here so that the floated
+     * button-wrap can have a bottom margin without having the
+     * spacing visually doubled up with that of the notice.
+     */
+    padding: 18px 0;
+  }
+
+  .c-notice__title {
+    margin-bottom: 4px;
+    @include t-title-d;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .c-notice__message {
+    @include t-body;
+    @include f-rt-inline-tags;
+
+    /*
+     * If paragraphs do appear, we intentionally want the spacing
+     * to be tighter than normal.
+     */
+    p {
+      margin: 0 0 0.5rem 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }

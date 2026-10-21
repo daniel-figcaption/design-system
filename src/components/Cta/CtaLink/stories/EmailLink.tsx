@@ -5,7 +5,6 @@ export const props: React.ComponentProps<typeof Component> = {
   label: 'test@example.com',
   variant: 'link',
   icon: 'envelope',
-  iconNudgeY: 'down',
   url: 'mailto:test@example.com',
 };
 

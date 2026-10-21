@@ -1,15 +1,8 @@
 $arial-font-family: 'Arial', sans-serif;
 $noto-sans-font-family: 'Noto Sans', sans-serif;
-$default-font-family: $noto-sans-font-family;
+$google-sans-font-family: 'Google Sans', sans-serif;
+$inter-font-family: 'Inter', sans-serif;
 
+$default-font-family: $inter-font-family;
 $default-font-weight: 400;
-
-/*
- * We define line-height in a unitless manner first.
- * We then also convert this to an em version.
- * We do this because:
- *   - We need a unitless version to cascade down correctly from :root.
- *   - We need an em version for use in calc() on certain elements.
- */
-$default-line-height-unitless: 1.25;
-$default-line-height-em: #{$default-line-height-unitless}em;
+$default-line-height-multiplier: 1.25;

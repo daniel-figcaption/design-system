@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import "./Textarea.scss";
-import { TBaseFullControl } from "../lib/types";
-import defineFullControlComponent from "../lib/defineFullControlComponent";
+import { TBaseFullControl, TFullControlSize } from "../shared/types";
+import defineFullControlComponent from "../shared/defineFullControlComponent";
 
 export type TTextareaComponent = TBaseFullControl<{
   rows?: number;
-  size?: 'sm' | 'base' | 'lg';
+  size?: TFullControlSize;
 }, HTMLTextAreaElement>;
 
 const Textarea: TTextareaComponent = defineFullControlComponent(({

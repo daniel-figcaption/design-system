@@ -1,11 +1,12 @@
 import clsx from "clsx";
 import "./Textbox.scss";
-import { TBaseFullControl } from "../lib/types";
-import defineFullControlComponent from "../lib/defineFullControlComponent";
+import { TBaseFullControl, TFullControlSize } from "../shared/types";
+import defineFullControlComponent from "../shared/defineFullControlComponent";
+import { TTextboxType } from "./lib/types";
 
 export type TTextboxComponent = TBaseFullControl<{
-  type?: 'text' | 'password' | 'email' | 'url' | 'search';
-  size?: 'sm' | 'base' | 'lg';
+  type?: TTextboxType;
+  size?: TFullControlSize;
 }, HTMLInputElement>;
 
 const Textbox: TTextboxComponent = defineFullControlComponent(({

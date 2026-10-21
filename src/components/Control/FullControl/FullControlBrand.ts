@@ -1,5 +1,5 @@
 import { TBrand } from "@src/components/lib/types";
-import { TBaseFullControl } from "./lib/types";
+import { TBaseFullControl } from "./shared/types";
 
 export const fullControlBrandString = "Component/Control/FullControl" as const;
 

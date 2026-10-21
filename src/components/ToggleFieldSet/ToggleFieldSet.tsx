@@ -6,16 +6,15 @@ import React from "react";
 import defineComponent from "../lib/defineComponent";
 import ToggleField from "../ToggleField/ToggleField";
 import assertAsType from "../lib/assertAsType";
+import { TToggleFieldSetLayout } from "./lib/types";
 
 export type TToggleFieldSetComponent = TBaseComponent<{
-  layout?: 'stacked' | 'row';
-  id?: string;
+  layout?: TToggleFieldSetLayout;
   children: OneOrMany<React.ReactElement>; // TElement<TToggleField>[]
 }>;
 
 const ToggleFieldSet: TToggleFieldSetComponent = defineComponent(({
   layout = 'stacked',
-  id,
   className,
   children
 }) => {
@@ -30,7 +29,7 @@ const ToggleFieldSet: TToggleFieldSetComponent = defineComponent(({
   );
 
   return (
-    <ul className={allClasses} id={id}>
+    <ul className={allClasses}>
       {fields.map((field, i) => (
         <li key={i} className="c-toggle-field-set__item">
           {field}

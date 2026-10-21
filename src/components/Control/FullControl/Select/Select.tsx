@@ -3,12 +3,12 @@ import clsx from "clsx";
 import "./Select.scss";
 import { TRawOptions } from "./lib/types";
 import toOptionItemArray from "./lib/toOptionItemArray";
-import { TBaseFullControl } from "../lib/types";
-import defineFullControlComponent from "../lib/defineFullControlComponent";
+import { TBaseFullControl, TFullControlSize } from "../shared/types";
+import defineFullControlComponent from "../shared/defineFullControlComponent";
 
 export type TSelectComponent = TBaseFullControl<{
   options: TRawOptions,
-  size?: 'sm' | 'base' | 'lg';
+  size?: TFullControlSize;
 }, HTMLSelectElement>;
 
 const Select: TSelectComponent = defineFullControlComponent(({
@@ -52,7 +52,6 @@ const Select: TSelectComponent = defineFullControlComponent(({
           </option>
         ))}
       </select>
-      <Icon className="c-select__icon" iconName="chevron-down" />
     </span>
   );
 });

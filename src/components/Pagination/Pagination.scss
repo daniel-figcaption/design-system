@@ -1,0 +1,68 @@
+@use '@src/styles/tools' as *;
+
+@layer components {
+  .c-pagination {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+    @include t-body;
+  }
+
+  .c-pagination__nav-group {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    gap: 10px;
+  }
+
+  .c-pagination__page-group {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    gap: 12px;
+  }
+
+  .c-pagination__page-subgroup {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    gap: inherit;
+
+    & + & {
+      &::before {
+        content: '...' / '';
+      }
+    }
+  }
+
+  .c-pagination__end-link,
+  .c-pagination__end-item,
+  .c-pagination__track-link,
+  .c-pagination__track-item {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    gap: 0.25em;
+  }
+
+  .c-pagination__end-link,
+  .c-pagination__track-link {
+    @include f-text-link;
+  }
+
+  .c-pagination__end-item,
+  .c-pagination__track-item {
+    cursor: default;
+    opacity: 0.333;
+  }
+
+  .c-pagination__page-item {
+    cursor: default;
+    font-weight: 700;
+  }
+
+  .c-pagination__page-link {
+    @include f-text-link;
+  }
+}

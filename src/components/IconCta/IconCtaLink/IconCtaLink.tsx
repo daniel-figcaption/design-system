@@ -1,7 +1,6 @@
-import IconCta from '../IconCta';
-import '../IconCta.scss';
-import defineIconCtaComponent from '../lib/defineIconCtaComponent';
-import { TBaseIconCta } from '../lib/types';
+import IconCta from '../IconCta/IconCta';
+import defineIconCtaComponent from '../shared/defineIconCtaComponent';
+import { TBaseIconCta } from '../shared/types';
 
 export type TIconCtaLinkComponent = TBaseIconCta<{
   url: string;

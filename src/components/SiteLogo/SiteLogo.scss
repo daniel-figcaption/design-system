@@ -1,0 +1,28 @@
+@use '@src/styles/tools' as *;
+
+@layer components {
+  .c-site-logo {
+    --default-width: calc(var(--intrinsic-width) * 1px);
+    aspect-ratio: var(--intrinsic-width) / var(--intrinsic-height);
+    height: auto;
+    max-width: 100%;
+    position: relative;
+    width: var(--default-width);
+  }
+
+  .c-site-logo__link {
+    display: block;
+    inset: 0;
+    position: absolute;
+  }
+
+  .c-site-logo__image {
+    display: block;
+    height: 100%;
+    left: 0;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

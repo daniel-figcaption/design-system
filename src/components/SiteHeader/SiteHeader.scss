@@ -1,0 +1,108 @@
+@use '@src/styles/tools' as *;
+
+@layer components {
+  .c-site-header {
+    background-color: $gray-100;
+    display: flex;
+    flex-flow: row;
+    gap: 24px;
+    height: 72px;
+    justify-content: space-between;
+    @include u-px-container;
+  }
+
+  .c-site-header__logo.c-site-logo {
+    flex: none;
+    margin: auto 0;
+    width: 182px;
+  }
+
+  .c-site-header__nav {
+    /* Visually balancing the right-padding on the menu links. */
+    margin-right: -16px;
+  }
+
+  .c-site-header__menu-list {
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+  }
+
+  .c-site-header__menu-item {
+    height: 100%;
+    position: relative;
+    @include t-body;
+
+    &:hover,
+    &:focus-within {
+      /* 
+       * Styles to apply to the menu item if it, or any of its descendents, 
+       * (e.g. dropdowns) are being examined.
+       */
+      background-color: $gray-200;
+    }
+  }
+
+  .c-site-header__menu-link {
+    align-items: center;
+    display: flex;
+    gap: 0.4375em;
+    height: 100%;
+    justify-content: center;
+    padding: 0 20px;
+    text-align: center;
+
+    .c-site-header__menu-item:has(.c-site-header__dropdown-menu) & {
+      @include pseudo-icon(chevron-down, after, 0.875em);
+    }
+
+    &:hover {
+      @include standard-underline;
+    }
+
+    &:focus-visible {
+      /* Display the focus outline on the inside of the link box. */
+      outline-offset: $default-focus-outline-width * -1;
+    }
+  }
+
+  .c-site-header__dropdown-menu.c-dropdown-menu {
+    display: none;
+    left: 0;
+    margin-bottom: -100vh;
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+
+    .c-site-header__menu-item:hover &,
+    .c-site-header__menu-item:focus-within & {
+      display: block;
+    }
+  }
+
+  /* progressive enhancement: use anchor positioning where supported */
+  @supports (anchor-name: --x) {
+    .c-site-header__menu-item {
+      anchor-scope: --menu-link; 
+      position: static;
+    }
+
+    .c-site-header__menu-link {
+      anchor-name: --menu-link; 
+    }
+
+    .c-site-header__dropdown-menu.c-dropdown-menu {
+      position: absolute;
+      position-anchor: --menu-link;
+      position-area: bottom span-right;
+      position-try-fallbacks: --flip-left;
+      left: unset;
+      top: unset;
+    }
+
+    @position-try --flip-left {
+      position-area: bottom span-left;
+      text-align: right;
+    }
+  }
+}

@@ -1,9 +1,8 @@
-@use '@src/styles/shared' as *;
+@use '@src/styles/tools' as *;
 
-@layer molecules.b {
+@layer components {
   .c-toggle-field {
     --toggle-height: #{$default-toggle-size};
-    --label-line-height: #{$default-line-height-em};
     align-items: flex-start;
     display: flex;
     flex-flow: row;
@@ -22,8 +21,9 @@
   .c-toggle-field__label {
     color: $default-fg-color;
     font-size: 0.875rem;
-    line-height: var(--label-line-height);
-    margin-top: calc((var(--toggle-height) - var(--label-line-height)) / 2);
+    line-height: 1.25;
+    margin-top: calc((var(--toggle-height) - 1lh) / 2);
+    @include f-rt-inline-tags;
   }
 
   .c-toggle-field__required-flag {
@@ -39,6 +39,7 @@
     font-size: 0.75rem;
     font-style: italic;
     line-height: 1.25rem;
+    @include f-rt-inline-tags;
 
     .c-toggle-field__control-wrap + & {
       margin-top: 0.125rem;

@@ -1,0 +1,46 @@
+@use 'sass:map';
+
+@mixin pseudo-icon($icon-name, $position: before, $size: 1em) {
+  &::#{$position} {
+    background-color: currentColor;
+    content: '';
+    display: block;
+    font-size: $size;
+    height: 1em;
+    mask-image: _icon-url($icon-name);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    width: 1em;
+    @content;
+  }
+}
+
+@mixin update-after-icon($config) {
+  @include _update-pseudo-icon(after, $config);
+}
+
+@mixin update-before-icon($config) {
+  @include _update-pseudo-icon(before, $config);
+}
+
+@mixin _update-pseudo-icon($position, $config) {
+  $icon-name: map.get($config, icon-name);
+  $size: map.get($config, size);
+
+  &::#{$position} {
+    @if $icon-name {
+      mask-image: _icon-url($icon-name);
+    }
+
+    @if $size {
+      font-size: $size;
+    }
+
+    @content;
+  }
+}
+
+@function _icon-url($icon-name) {
+  @return url("@src/assets/icons/#{$icon-name}.svg?url");
+}

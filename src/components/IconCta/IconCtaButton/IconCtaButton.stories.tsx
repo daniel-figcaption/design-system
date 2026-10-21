@@ -1,44 +1,43 @@
 import type { Meta } from '@storybook/react';
 import IconCtaButton from './IconCtaButton';
-import { argTypes as iconCtaArgTypes, defaultProps as defaultIconCtaProps } from '../IconCta.stories.config';
 import CtaDecorator from '@sb/decorators/CtaDecorator/CtaDecorator';
+import createPartialMeta from '@src/components/lib/storybook/createPartialMeta';
+import iconCtaPropFields from '../shared/iconCtaPropFields';
+import { iconCtaButtonButtonTypes } from './lib/enums';
 
 const CTABUTTON_CATEGORY = 'Button Properties';
 
 const meta: Meta<typeof IconCtaButton> = {
   title: 'Components/IconCta/IconCtaButton',
-  component: IconCtaButton,
-  decorators: [CtaDecorator],
-  tags: ['autodocs'],
-  args: {
-    ...defaultIconCtaProps,
-    buttonType: 'button',
-    buttonAttributes: {},
-  },
-  argTypes: {
-    ...iconCtaArgTypes,
-    buttonType: {
-      control: 'select',
-      description: 'The value of the `type` attribute on the `button` element.',
-      options: ['button', 'submit', 'reset'],
-      table: {
-        defaultValue: {
-          summary: 'button',
-        },
-        category: CTABUTTON_CATEGORY,
-        type: {
-          summary: 'string',
-        },
+  ...createPartialMeta({
+    component: IconCtaButton,
+    layout: CtaDecorator,
+    fields: {
+      ...iconCtaPropFields,
+      onClick: {
+        p0_tableCategory: CTABUTTON_CATEGORY,
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'function',
+        p3_description: 'The function to call when the button is clicked.',
+        p4_storybookControlType: 'NOT_SHOWN',
+      },
+      buttonType: {
+        p0_tableCategory: CTABUTTON_CATEGORY,
+        p1_typeSafeDefaultValue: 'button',
+        p2_valueTypeLabel: 'string',
+        p3_description: 'The value of the `type` attribute on the `button` element.',
+        p4_storybookControlType: 'select',
+        p5_controlOptions: iconCtaButtonButtonTypes,
+      },
+      buttonAttributes: {
+        p0_tableCategory: CTABUTTON_CATEGORY,
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'object',
+        p3_description: 'Extra HTML attributes to apply to the `button` element. Use the `className` prop to apply extra classes.',
+        p4_storybookControlType: 'object',
       },
     },
-    buttonAttributes: {
-      control: 'object',
-      description: 'Extra HTML attributes to apply to the `button` element. Use `className` to apply extra classes.',
-      table: {
-        category: CTABUTTON_CATEGORY,
-      },
-    },
-  }
+  }),
 };
 
 export default meta;

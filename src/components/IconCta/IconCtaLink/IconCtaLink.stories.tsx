@@ -1,48 +1,41 @@
 import type { Meta } from '@storybook/react';
 import IconCtaLink from './IconCtaLink';
-import { argTypes as iconCtaArgTypes, defaultProps as defaultIconCtaProps } from '../IconCta.stories.config';
 import CtaDecorator from '@sb/decorators/CtaDecorator/CtaDecorator';
+import createPartialMeta from '@src/components/lib/storybook/createPartialMeta';
+import iconCtaPropFields from '../shared/iconCtaPropFields';
 
 const LINK_CATEGORY = 'Link Properties';
 
 const meta: Meta<typeof IconCtaLink> = {
   title: 'Components/IconCta/IconCtaLink',
-  component: IconCtaLink,
-  decorators: [CtaDecorator],
-  tags: ['autodocs'],
-  args: {
-    ...defaultIconCtaProps,
-    url: undefined,
-    openInNewTab: false,
-    aAttributes: {},
-  },
-  argTypes: {
-    ...iconCtaArgTypes,
-    url: {
-      control: 'text',
-      description: 'The URL of the page to link to from this CTA.',
-      table: {
-        category: LINK_CATEGORY,
+  ...createPartialMeta({
+    component: IconCtaLink,
+    layout: CtaDecorator,
+    fields: {
+      ...iconCtaPropFields,
+      url: {
+        p0_tableCategory: LINK_CATEGORY,
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'string',
+        p3_description: 'The URL of the page to link to from this CTA.',
+        p4_storybookControlType: 'text',
+      },
+      openInNewTab: {
+        p0_tableCategory: LINK_CATEGORY,
+        p1_typeSafeDefaultValue: false,
+        p2_valueTypeLabel: 'boolean',
+        p3_description: 'Whether or not the link will open in a new tab.',
+        p4_storybookControlType: 'boolean',
+      },
+      aAttributes: {
+        p0_tableCategory: LINK_CATEGORY,
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'object',
+        p3_description: 'Extra HTML attributes to apply to the `a` element. Use the `className` prop to apply extra classes.',
+        p4_storybookControlType: 'object',
       },
     },
-    openInNewTab: {
-      control: 'boolean',
-      description: 'Whether or not the link will open in a new tab.',
-      table: {
-        defaultValue: {
-          summary: 'false',
-        },
-        category: LINK_CATEGORY,
-      },
-    },
-    aAttributes: {
-      control: 'object',
-      description: 'Extra HTML attributes to apply to the `a` element.',
-      table: {
-        category: LINK_CATEGORY,
-      },
-    },
-  }
+  }),
 };
 
 export default meta;

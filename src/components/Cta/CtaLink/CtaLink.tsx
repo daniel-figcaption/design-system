@@ -1,7 +1,6 @@
-import Cta from '../Cta';
-import '../Cta.scss';
-import defineCtaComponent from '../lib/defineCtaComponent';
-import { TBaseCta } from '../lib/types';
+import Cta from '../Cta/Cta';
+import defineCtaComponent from '../shared/defineCtaComponent';
+import { TBaseCta } from '../shared/types';
 
 export type TCtaLinkComponent = TBaseCta<{
   url: string;

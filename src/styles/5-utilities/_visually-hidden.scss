@@ -1,7 +1,0 @@
-@use '../2-tools/visually-hidden' as *;
-
-@layer utilities {
-  .visually-hidden {
-    @include visually-hidden;
-  }
-}

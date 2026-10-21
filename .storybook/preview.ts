@@ -1,8 +1,8 @@
 import type { Preview } from '@storybook/react-vite';
-import './preview.scss';
-import '../src/styles/main.scss';
+import './styles/preview.scss';
 
 const preview: Preview = {
+  tags: ['autodocs'],
   parameters: {
     controls: {
       matchers: {

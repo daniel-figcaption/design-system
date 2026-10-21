@@ -1,65 +1,48 @@
 import type { Meta } from '@storybook/react';
 import ToggleField from './ToggleField';
 import FieldDecorator from '@sb/decorators/FieldDecorator/FieldDecorator';
+import createPartialMeta from '../lib/storybook/createPartialMeta';
+import checkboxMeta from '../Control/ToggleControl/Checkbox/Checkbox.stories';
+import radioMeta from '../Control/ToggleControl/Radio/Radio.stories';
 
 const meta: Meta<typeof ToggleField> = {
   title: 'Components/Field/ToggleField',
-  component: ToggleField,
-  decorators: [FieldDecorator],
-  tags: ['autodocs'],
-  args: {
-    label: undefined,
-    children: undefined,
-    helpText: undefined,
-    isRequired: false,
-    activeErrorMessage: undefined,
-  },
-  argTypes: {
-    label: {
-      control: 'text',
-      description: 'The label to display above the control. This can be either plain text, or contain simple HTML formatting (e.g. **bold** text).',
-      table: {
-        type: {
-          summary: 'string | HTML',
-        },
+  ...createPartialMeta({
+    component: ToggleField,
+    layout: FieldDecorator,
+    fields: {
+      label: {
+        p1_typeSafeDefaultValue: '',
+        p2_valueTypeLabel: ['string', 'ReactNode'],
+        p3_description: 'The label to display above the control. This can either be a simple string, or rich text HTML for formatting (e.g. `<strong>`).',
+        p4_storybookControlType: 'text',
+      },
+      children: {
+        p1_typeSafeDefaultValue: null,
+        p2_valueTypeLabel: 'ReactNode',
+        p3_description: `The toggle element, normally a [${checkboxMeta.title}] or [${radioMeta.title}] element.`,
+        p4_storybookControlType: 'NOT_SHOWN',
+      },
+      helpText: {
+        p1_typeSafeDefaultValue: '',
+        p2_valueTypeLabel: ['string', 'ReactNode'],
+        p3_description: 'Extra info about this field. This can either be a simple string, or rich text HTML for formatting (e.g. `<strong>`).',
+        p4_storybookControlType: 'text',
+      },
+      isRequired: {
+        p1_typeSafeDefaultValue: false,
+        p2_valueTypeLabel: 'boolean',
+        p3_description: 'Mandatory fields are marked with an asterisk.',
+        p4_storybookControlType: 'boolean',
+      },
+      activeErrorMessage: {
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'string',
+        p3_description: 'A validation message related to the control\'s current error state. This message should help the use identify the problem.',
+        p4_storybookControlType: 'text',
       },
     },
-    children: {
-      control: false,
-      description: 'The toggle element, e.g. a [Checkbox](./?path=/docs/components-forms-toggle-controls-checkbox--docs) component.',
-      table: {
-        type: {
-          summary: null as any,
-        },
-      },
-    },
-    helpText: {
-      control: 'text',
-      description: 'Extra info about this field. This can be either plain text, or contain simple HTML formatting (e.g. **bold** text).',
-      table: {
-        type: {
-          summary: 'string | HTML',
-        },
-      },
-    },
-    isRequired: {
-      control: 'boolean',
-      description: 'Mandatory fields are marked with an asterisk.',
-    },
-    activeErrorMessage: {
-      control: 'text',
-      description: 'A validation message related to the control\'s current error state. This message should help the use identify the problem.',
-    },
-    className: {
-      control: 'text',
-      description: 'Extra CSS classes to apply to the outer element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-  },
+  }),
 };
 
 export default meta;

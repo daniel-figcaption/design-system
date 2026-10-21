@@ -1,6 +1,6 @@
-@use '@src/styles/shared' as *;
+@use '@src/styles/tools' as *;
 
-@layer molecules.b {
+@layer components {
   .c-field {
     display: block;
   }
@@ -37,7 +37,7 @@
   }
 
   .c-field__help-text {
-    color: $gray-500;
+    color: $gray-600;
     font-size: 0.75rem;
     font-style: italic;
     line-height: 1rem;

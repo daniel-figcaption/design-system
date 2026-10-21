@@ -1,0 +1,23 @@
+@use './text-link' as *;
+
+@mixin f-rt-inline-tags {
+  a {
+    @include f-text-link;
+  }
+
+  b,
+  strong {
+    font-weight: 700;
+  }
+
+  i,
+  em {
+    font-style: italic;
+  }
+}
+
+@mixin classes {
+  .f-rt-inline-tags {
+    @include f-rt-inline-tags;
+  }
+}

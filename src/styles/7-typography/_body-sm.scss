@@ -1,0 +1,12 @@
+@use '../1-settings/breakpoints' as *;
+@use '../2-mixins/type.body' as *;
+
+@mixin t-body-sm {
+  @include type_body-14;
+}
+
+@mixin classes {
+  .t-body-sm {
+    @include t-body-sm;
+  }
+}

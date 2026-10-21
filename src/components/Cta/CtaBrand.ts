@@ -1,5 +1,5 @@
 import { TBrand } from "../lib/types";
-import { TBaseCta } from "./lib/types";
+import { TBaseCta } from "./shared/types";
 
 export const ctaBrandString = "Component/Cta" as const;
 

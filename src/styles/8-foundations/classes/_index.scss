@@ -1,0 +1,11 @@
+@use '../clear-fix';
+@use '../container';
+@use '../rt-inline-tags';
+@use '../text-link';
+
+@layer foundations {
+  @include clear-fix.classes;
+  @include container.classes;
+  @include rt-inline-tags.classes;
+  @include text-link.classes;
+}

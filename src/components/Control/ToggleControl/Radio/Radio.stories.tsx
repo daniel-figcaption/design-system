@@ -1,47 +1,27 @@
 import type { Meta } from '@storybook/react';
 import Radio from './Radio';
+import createPartialMeta from '@src/components/lib/storybook/createPartialMeta';
 
 const meta: Meta<typeof Radio> = {
   title: 'Components/Control/Toggle Control/Radio',
-  component: Radio,
-  parameters: {
+  ...createPartialMeta({
+    component: Radio,
     layout: 'centered',
-  },
-  tags: ['autodocs'],
-  args: {
-    hasError: false,
-    valueElAttrs: {},
-    className: undefined,
-  },
-  argTypes: {
-    hasError: {
-      control: 'boolean',
-      description: 'Whether or not the component is actively in an error state.',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
+    fields: {
+      hasError: {
+        p1_typeSafeDefaultValue: false,
+        p2_valueTypeLabel: 'boolean',
+        p3_description: 'Whether or not the component is actively in an error state.',
+        p4_storybookControlType: 'boolean',
+      },
+      valueElAttrs: {
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'object',
+        p3_description: 'Extra HTML attributes to apply to the `<input>` element.',
+        p4_storybookControlType: 'object',
       },
     },
-    valueElAttrs: {
-      control: 'object',
-      description: 'Extra HTML attributes to apply to the `<input>` element.',
-      table: {
-        type: {
-          summary: 'object',
-        },
-      }
-    },
-    className: {
-      control: 'text',
-      description: 'Extra CSS classes to apply to the outer element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-  },
+  }),
 };
 
 export default meta;

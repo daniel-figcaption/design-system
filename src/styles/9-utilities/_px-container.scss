@@ -1,0 +1,12 @@
+@use '../1-settings/container-and-gutters' as *;
+
+@mixin u-px-container {
+  padding-left: max(var(--min-edge-gap), calc((100% - $container-max-width) / 2 + var(--min-edge-gap)));
+  padding-right: max(var(--min-edge-gap), calc((100% - $container-max-width) / 2 + var(--min-edge-gap)));
+}
+
+@mixin classes {
+  .u-px-container {
+    @include u-px-container;
+  }
+}

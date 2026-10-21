@@ -1,0 +1,15 @@
+@use '../body-sm';
+@use '../body';
+@use '../title-a';
+@use '../title-b';
+@use '../title-c';
+@use '../title-d';
+
+@layer typography {
+  @include body-sm.classes;
+  @include body.classes;
+  @include title-a.classes;
+  @include title-b.classes;
+  @include title-c.classes;
+  @include title-d.classes;
+}

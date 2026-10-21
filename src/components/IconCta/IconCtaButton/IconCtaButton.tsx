@@ -1,14 +1,16 @@
-import IconCta from '../IconCta';
-import '../IconCta.scss';
-import defineIconCtaComponent from '../lib/defineIconCtaComponent';
-import { TBaseIconCta } from '../lib/types';
+import IconCta from '../IconCta/IconCta';
+import defineIconCtaComponent from '../shared/defineIconCtaComponent';
+import { TBaseIconCta } from '../shared/types';
+import { TIconCtaButtonButtonType } from './lib/types';
 
 export type TIconCtaButtonComponent = TBaseIconCta<{
-  buttonType?: 'button' | 'submit' | 'reset';
+  onClick?: React.MouseEventHandler<HTMLButtonElement>,
+  buttonType?: TIconCtaButtonButtonType;
   buttonAttributes?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }>;
 
 const IconCtaButton: TIconCtaButtonComponent = defineIconCtaComponent(({
+  onClick,
   buttonType = 'button',
   buttonAttributes,
   ...props
@@ -16,6 +18,7 @@ const IconCtaButton: TIconCtaButtonComponent = defineIconCtaComponent(({
   return (
     <IconCta 
       as="button"
+      onClick={onClick}
       {...props}
       ctaProps={{
         type: buttonType,

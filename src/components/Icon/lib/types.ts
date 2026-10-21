@@ -1,5 +1,4 @@
-import iconNames from "./iconNames";
+import { iconNames, iconRelativeSizes } from "./enums";
 
 export type TIconName = typeof iconNames[number];
-
-export type TIconRelativeSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl';
+export type TIconRelativeSize = typeof iconRelativeSizes[number];

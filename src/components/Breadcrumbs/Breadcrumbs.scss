@@ -1,0 +1,31 @@
+@use '@src/styles/tools' as *;
+
+@layer components {
+  .c-breadcrumbs {
+    display: block;
+  }
+
+  .c-breadcrumbs__list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 6px 10px;
+  }
+
+  .c-breadcrumbs__item {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    @include t-body-sm;
+
+    &:not(:last-child) {
+      @include pseudo-icon(chevron-right, after, 0.75rem) {
+        flex: none;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .c-breadcrumbs__link {
+    @include f-text-link;
+  }
+}

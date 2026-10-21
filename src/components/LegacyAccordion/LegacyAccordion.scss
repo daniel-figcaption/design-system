@@ -1,6 +1,6 @@
-@use '@src/styles/shared' as *;
+@use '@src/styles/tools' as *;
 
-@layer molecules.c {
+@layer components {
   .c-legacy-accordion {
     display: block;
   }
@@ -10,8 +10,8 @@
 
     &:not(:last-child) {
       border-bottom: 1px solid;
-      margin-bottom: 12px;
-      padding-bottom: 12px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
     }
   }
 
@@ -29,7 +29,7 @@
     display: flex;
     font: inherit;
     gap: 24px;
-    padding: 10px 0;
+    padding: 8px 0;
     position: relative;
     width: 100%;
 
@@ -77,11 +77,35 @@
 
   .c-legacy-accordion__panel {
     display: block;
+    height: auto;
+    overflow: hidden;
+    transition: height 300ms ease, display 300ms ease;
+    /* This transition-behavior ensures that display triggers after the transition duration period. */
+    transition-behavior: allow-discrete;
 
+    /* The browser cannot calculate the initial height when display 
+     * is none because it is completely removed from layout. 
+     * This fixes that by telling the browser what the starting 
+     * point is.
+     */
+    @starting-style {
+      height: 0;
+    }
+
+    &[hidden] {
+      display: none;
+      height: 0;
+    }
+
+    /*
+     * We apply top/bottom spacing via these pseudo-elements so that
+     * the panel height can be smoothly transitioned to zero without 
+     * having to also worry about transitioning the padding.
+     */
     &::before {
       content: '';
       display: block;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     &::after {

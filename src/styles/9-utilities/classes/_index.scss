@@ -1,0 +1,7 @@
+@use '../px-container';
+@use '../visually-hidden';
+
+@layer utilities {
+  @include px-container.classes;
+  @include visually-hidden.classes;
+}

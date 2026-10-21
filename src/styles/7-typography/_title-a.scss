@@ -1,0 +1,16 @@
+@use '../1-settings/breakpoints' as *;
+@use '../2-mixins/type.title' as *;
+
+@mixin t-title-a {
+  @include type_title-28;
+
+  @media (min-width: $bp-sm) {
+    @include type_title-36;
+  }
+}
+
+@mixin classes {
+  .t-title-a {
+    @include t-title-a;
+  }
+}

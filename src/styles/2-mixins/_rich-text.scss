@@ -1,0 +1,180 @@
+@use '../7-typography/tools' as *;
+@use '../8-foundations/clear-fix' as *;
+@use '../8-foundations/rt-inline-tags' as *;
+
+@mixin rich-text {
+  @include t-body;
+  @include f-rt-inline-tags;
+  @include f-clear-fix;
+
+  p {
+    margin: 1rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    display: block;
+    border: solid;
+    border-width: 1px 0 0 0;
+    margin: 1.5rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h1,
+  h2 {
+    margin-top: 2.5rem;
+    @include t-title-a;
+  }
+
+  h3 {
+    margin-top: 2.25rem;
+    @include t-title-b;
+  }
+
+  h4 {
+    margin-top: 2rem;
+    @include t-title-c;
+  }
+
+  h5 {
+    margin-top: 1.75rem;
+    @include t-title-d;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 1rem;
+
+    /*
+     * When 2 heading tags are adjacent, reduce the gap between them.
+     * (i.e. ignore the large margin-top that would otherwise separate
+     * the heading from the previous content.
+     */
+    & + :is(h1, h2, h3, h4, h5, h6) {
+      margin-top: 0.75rem;
+    }
+
+    &:has(+ :is(h1, h2, h3, h4, h5, h6)) {
+      margin-bottom: 0.75rem;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0
+    }
+  }
+
+  ul,
+  ol {
+    margin: 1rem 0;
+  }
+
+  & > ul,
+  & > ol {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0
+    }
+  }
+
+  ul {
+    --gutter-width: 1.25rem;
+    --marker: '\25CF'; // Black circle
+    --marker-scale-factor: 0.8;
+
+    ul {
+      --marker: '\25E6'; // White bullet point
+      --marker-scale-factor: 1.5;
+
+      ul {
+        --marker: '\25AA'; // Black square
+        --marker-scale-factor: 1.5;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: ol;
+    --gutter-width: 2rem;
+    --marker: counter(ol) '.';
+
+    li {
+      counter-increment: ol;
+    }
+
+    ol {
+      --gutter-width: 1.75rem;
+      --marker: counter(ol, lower-alpha) '.';
+
+      ol {
+        --gutter-width: 2rem;
+        --marker: counter(ol, lower-roman) '.';
+      }
+    }
+  }
+
+  li {
+    margin: 0.75rem 0;
+    min-height: 1.5rem;
+    padding-left: var(--gutter-width);
+
+    @supports (min-height: 1lh) {
+      /*
+       * The marker is floated to as to work where the item contents are block-level,
+       * e.g. inside a <p> tag.
+       * We can't clear the float using a clear-fix or flow-root because this interferes
+       * with desired margin collapsing inside the item contents.
+       *
+       * We use a min-height here equal to the line-height.
+       */
+      min-height: 1lh;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0
+    }
+
+    &::before {
+      content: var(--marker);
+      float: left;
+      margin-left: calc(var(--gutter-width) * -1);
+      pointer-events: none;
+      transform-origin: center left;
+      transform: scale(var(--marker-scale-factor, 1));
+      width: var(--gutter-width);
+    }
+
+    ul,
+    ol {
+      /*
+       * Nested lists should follow list item margin styles (usually smaller).
+       * No first-child and last-child zeroing here because of the rpesence of
+       * adjacent text nodes.
+       */
+      margin: 0.75rem 0;
+    }
+  }
+}

@@ -1,26 +1,22 @@
-import type { Meta } from '@storybook/react';
 import RichText from './RichText';
 import SectionDecorator from '@sb/decorators/SectionDecorator/SectionDecorator';
+import createPartialMeta from '../lib/storybook/createPartialMeta';
+import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof RichText> = {
   title: 'Components/RichText',
-  component: RichText,
-  decorators: [SectionDecorator],
-  tags: ['autodocs'],
-  args: {
-    className: undefined,
-  },
-  argTypes: {
-    className: {
-      control: 'text',
-      description: 'Extra CSS classes to apply to the outer element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
+  ...createPartialMeta({
+    component: RichText,
+    layout: SectionDecorator,
+    fields: {
+      children: {
+        p1_typeSafeDefaultValue: null,
+        p2_valueTypeLabel: 'ReactNode',
+        p3_description: 'The rich text HTML content.',
+        p4_storybookControlType: 'NOT_SHOWN',
       },
     },
-  },
+  }),
 };
 
 export default meta;

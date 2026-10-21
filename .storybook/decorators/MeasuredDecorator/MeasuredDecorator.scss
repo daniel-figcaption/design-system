@@ -1,0 +1,26 @@
+.sb-measured-decorator {
+  display: grid;
+  min-height: var(--measured-height, 0px);
+}
+
+.sb-measured-decorator__measured,
+.sb-measured-decorator__component {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+
+/*
+ * We need overflow: hidden (or auto) and position: relative
+ * in order for the scrollHeight to be correctly calculated
+ * by useMeasuredHeight.
+ */
+.sb-measured-decorator__measured {
+  overflow: hidden;
+  position: relative;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.sb-measured-decorator__component {
+  z-index: 2;
+}

@@ -9,7 +9,7 @@ export const props: React.ComponentProps<typeof Component> = {
   ),
   hiddenControlLabel: 'Search keywords',
   cta: (
-    <IconCtaButton className="c-mini-form__icon-cta" hiddenLabel="Search" icon="search" buttonType="submit" />
+    <IconCtaButton className="c-mini-form__icon-cta" variant="primary" hiddenLabel="Search" icon="search" buttonType="submit" />
   ),
 };
 

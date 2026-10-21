@@ -1,14 +1,16 @@
-import Cta from '../Cta';
-import '../Cta.scss';
-import defineCtaComponent from '../lib/defineCtaComponent';
-import { TBaseCta } from '../lib/types';
+import Cta from '../Cta/Cta';
+import defineCtaComponent from '../shared/defineCtaComponent';
+import { TBaseCta } from '../shared/types';
+import { TCtaButtonButtonType } from './lib/types';
 
 export type TCtaButtonComponent = TBaseCta<{
-  buttonType?: 'button' | 'submit' | 'reset';
+  onClick?: React.MouseEventHandler<HTMLButtonElement>,
+  buttonType?: TCtaButtonButtonType;
   buttonAttributes?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }>;
 
 const CtaButton: TCtaButtonComponent = defineCtaComponent(({
+  onClick,
   buttonType = 'button',
   buttonAttributes,
   ...props
@@ -16,6 +18,7 @@ const CtaButton: TCtaButtonComponent = defineCtaComponent(({
   return (
     <Cta 
       as="button"
+      onClick={onClick}
       {...props}
       ctaProps={{
         type: buttonType,

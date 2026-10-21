@@ -1,33 +1,31 @@
-@use '@src/styles/shared' as *;
+@use '@src/styles/tools' as *;
 
-@layer atoms.b {
+@layer components {
   .c-textbox {
     /*
     *  These are standard properties that are helpful to calculate padding and more:
-    *    --control-border-width
-    *    --control-line-height
-    *    --control-min-height
+    *    --border-width
+    *    --height
     *
     *  Set them to whatever you like.
     */
-    --control-border-width: #{$default-control-border-width};
-    --control-line-height: #{$default-control-line-height};
-    --control-min-height: #{$default-control-min-height};
-    --control-px: #{$default-control-calculated-px};
+    --border-width: #{$default-control-border-width};
+    --height: #{$default-control-height};
+    --padding-x: #{$default-control-padding-x};
     
     background-color: $white;
-    border: var(--control-border-width) solid $gray-300;
+    border: var(--border-width) solid $gray-400;
     border-radius: 5px;
     color: $black;
     font-size: 1rem;
-    height: var(--control-min-height);
-    line-height: var(--control-line-height);
-    padding: 0 var(--control-px);
+    height: var(--height);
+    line-height: 1.25;
+    padding: 0 var(--padding-x);
     width: 100%;
 
     &:hover,
     &:focus {
-      border-color: $gray-500;
+      border-color: $gray-600;
     }
 
     &:disabled {
@@ -43,18 +41,18 @@
     }
 
     &::placeholder {
-      color: $gray-300;
+      color: $gray-400;
       font-style: italic;
       opacity: 1;
     }
   }
 
   .c-textbox--sm {
-    --control-min-height: 2.375rem;
+    --height: 2.375rem;
   }
 
   .c-textbox--lg {
-    --control-min-height: 3.0625rem;
+    --height: 3.0625rem;
     font-size: 1.125rem;
   }
 }

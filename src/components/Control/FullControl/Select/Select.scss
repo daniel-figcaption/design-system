@@ -1,39 +1,54 @@
-@use '@src/styles/shared' as *;
+@use '@src/styles/tools' as *;
 
-@layer atoms.b {
+@layer components {
   .c-select {
     /*
     *  These are standard properties that are helpful to calculate padding and more:
-    *    --control-border-width
-    *    --control-line-height
-    *    --control-min-height
+    *    --border-width
+    *    --height
     *
     *  Set them to whatever you like.
     */
-    --control-border-width: #{$default-control-border-width};
-    --control-line-height: #{$default-control-line-height};
-    --control-min-height: #{$default-control-min-height};
-    --control-px: #{$default-control-calculated-px};
+    --border-width: #{$default-control-border-width};
+    --height: #{$default-control-height};
+    --padding-x: #{$default-control-padding-x};
 
     position: relative;
     display: block;
+    
+    @include pseudo-icon(chevron-down, after) {
+      pointer-events: none;
+      position: absolute;
+      right: var(--padding-x);
+      top: 50%;
+      transform: translateY(-50%);
+    };
+
+    &:has(:disabled)::after {
+      opacity: 0.5;
+    }
+
+    &.has-error::after,
+    .has-error &::after {
+      color: $error-red;
+    }
   }
 
   .c-select__select {
     background-color: $white;
-    border: 1px solid $gray-300;
+    border: 1px solid $gray-400;
     border-radius: 5px;
     color: $black;
     cursor: pointer;
     font-size: 1rem;
-    height: var(--control-min-height);
-    line-height: var(--control-line-height);
-    padding: 0 2.5em 0 var(--control-px);
+    height: var(--height);
+    line-height: 1.25;
+    padding: 0 2.5em 0 var(--padding-x);
     width: 100%;
 
     &:hover,
     &:focus {
-      border-color: $gray-500;
+      border-color: $gray-600;
     }
 
     &:disabled {
@@ -65,28 +80,11 @@
   }
 
   .c-select--sm {
-    --control-min-height: 2.375rem;
+    --height: 2.375rem;
   }
 
   .c-select--lg {
-    --control-min-height: 3.0625rem;
+    --height: 3.0625rem;
     font-size: 1.125rem;
-  }
-
-  .c-select__icon {
-    pointer-events: none;
-    position: absolute;
-    right: var(--control-px);
-    top: 50%;
-    transform: translateY(-50%);
-
-    :disabled ~ & {
-      opacity: 0.5;
-    }
-
-    .has-error &,
-    .has-error ~ & {
-      color: $error-red;
-    }
   }
 }

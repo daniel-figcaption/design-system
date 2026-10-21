@@ -1,11 +1,11 @@
-@use '@src/styles/shared' as *;
+@use '@src/styles/tools' as *;
 
-@layer atoms.b {
+@layer components {
   .c-radio {
     --radio-size: #{$default-toggle-size};
     align-items: center;
     background-color: $white;
-    border: 1px solid $gray-400;
+    border: 1px solid $gray-500;
     border-radius: 100vw;
     cursor: pointer;
     display: inline-flex;
@@ -55,6 +55,6 @@
   }
 
   .c-radio__hidden-input {
-    @include visually-hidden;
+    @include u-visually-hidden;
   }
 }

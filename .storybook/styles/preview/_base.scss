@@ -1,0 +1,31 @@
+/*
+ * _base.scss
+ * 
+ * The base CSS output for the Storybook preview windows.
+ */
+@use 'sass:meta';
+@use 'variables.module' as *;
+
+/*
+ * It's essential to print out the CSS layer definitions before
+ * any actual layered code.
+ */
+@use '@src/styles/3-rules' as *;
+
+/*
+ * We need to apply @use rules before any other code, but our classes
+ * are the only ones that don't need scoping, so we need to print out
+ * these later layers first.
+ */
+@use '@src/styles/7-typography/classes' as *;
+@use '@src/styles/8-foundations/classes' as *;
+@use '@src/styles/9-utilities/classes' as *;
+
+/*
+ * Print our earlier layers scoped to the parent element.
+ */
+#{$sb-preview-root} {
+  @include meta.load-css('@src/styles/4-reset');
+  @include meta.load-css('@src/styles/5-generic');
+  @include meta.load-css('@src/styles/6-elements');
+}

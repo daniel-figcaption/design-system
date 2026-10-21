@@ -17,7 +17,7 @@ const MiniForm: TMiniFormComponent = defineComponent(({
   control: controlJsx,
   hiddenControlLabel,
   cta,
-  className 
+  className,
 }) => {
   const control = assertAsOneOfBase(controlJsx, FullControlBrand);
   const [controlWithId, controlId] = useControlWithId(control);
@@ -30,7 +30,7 @@ const MiniForm: TMiniFormComponent = defineComponent(({
   return (
     <form className={allClasses}>
       <div className="c-mini-form__field">
-        <label className="visually-hidden" htmlFor={controlId}>{hiddenControlLabel}</label>
+        <label className="u-visually-hidden" htmlFor={controlId}>{hiddenControlLabel}</label>
         {controlWithId}
       </div>
       <div className="c-mini-form__cta-wrap">

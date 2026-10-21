@@ -1,0 +1,7 @@
+@use '../2-mixins/default-focus-outline' as *;
+
+@layer generic {
+  :focus-visible {
+    @include default-focus-outline;
+  }
+}

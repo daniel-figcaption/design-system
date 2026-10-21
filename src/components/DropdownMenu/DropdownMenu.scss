@@ -1,0 +1,36 @@
+@use '@src/styles/tools' as *;
+
+@layer components {
+  .c-dropdown-menu {
+    background-color: $gray-100;
+    color: $default-fg-color;
+    display: block;
+    width: max-content;
+  }
+
+  .c-dropdown-menu__list {
+    padding: 10px 0;
+  }
+
+  .c-dropdown-menu__item {
+    min-width: 10em;
+    max-width: 20em;
+    @include t-body;
+  }
+
+  .c-dropdown-menu__link {
+    display: block;
+    /* The padding-right is usually larger than the padding-left in dropdown menus. */
+    padding: 8px 32px 8px 20px;
+
+    &:hover {
+      background-color: $gray-200;
+      @include standard-underline;
+    }
+
+    &:focus-visible {
+      /* Display the focus outline on the inside of the link box. */
+      outline-offset: $default-focus-outline-width * -1;
+    }
+  }
+}

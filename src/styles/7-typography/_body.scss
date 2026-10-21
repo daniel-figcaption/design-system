@@ -1,0 +1,16 @@
+@use '../1-settings/breakpoints' as *;
+@use '../2-mixins/type.body' as *;
+
+@mixin t-body {
+  @include type_body-14;
+
+  @media (min-width: $bp-sm) {
+    @include type_body-16;
+  }
+}
+
+@mixin classes {
+  .t-body {
+    @include t-body;
+  }
+}

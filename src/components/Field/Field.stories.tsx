@@ -1,78 +1,63 @@
 import type { Meta } from '@storybook/react';
 import Field from './Field';
 import FieldDecorator from '@sb/decorators/FieldDecorator/FieldDecorator';
+import createPartialMeta from '../lib/storybook/createPartialMeta';
+import textboxMeta from '../Control/FullControl/Textbox/Textbox.stories';
+import { fieldErrorMessagePositions, fieldHelpTextPositions } from './lib/enums';
+import toggleFieldSetMeta from '../ToggleFieldSet/ToggleFieldSet.stories';
 
 const meta: Meta<typeof Field> = {
   title: 'Components/Field/Field',
-  component: Field,
-  decorators: [FieldDecorator],
-  tags: ['autodocs'],
-  args: {
-    label: undefined,
-    isRequired: false,
-    helpText: undefined,
-    helpTextPosition: 'after',
-    activeErrorMessage: undefined,
-    errorMessagePosition: 'after',
-    className: undefined,
-    children: undefined,
-  },
-  argTypes: {
-    label: {
-      control: 'text',
-      description: 'The text label to display above the control.',
-    },
-    children: {
-      control: false,
-      description: 'The full control element, e.g. a [Textbox](./?path=/docs/components-forms-controls-textbox--docs) component.',
-      table: {
-        type: {
-          summary: null as any,
-        },
+  ...createPartialMeta({
+    component: Field,
+    layout: FieldDecorator,
+    fields: {
+      label: {
+        p1_typeSafeDefaultValue: '',
+        p2_valueTypeLabel: 'string',
+        p3_description: 'The text label to display above the control.',
+        p4_storybookControlType: 'text',
+      },
+      children: {
+        p1_typeSafeDefaultValue: null,
+        p2_valueTypeLabel: 'ReactNode',
+        p3_description: `The field core element. The element must be either of type \`FullControl\` (e.g. a [${textboxMeta.title}]), or a [${toggleFieldSetMeta.title}] element.`,
+        p4_storybookControlType: 'NOT_SHOWN',
+      },
+      isRequired: {
+        p1_typeSafeDefaultValue: false,
+        p2_valueTypeLabel: 'boolean',
+        p3_description: 'Mandatory fields are marked with an asterisk.',
+        p4_storybookControlType: 'boolean',
+      },
+      helpText: {
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'string',
+        p3_description: 'Extra information about this field to display to the user.',
+        p4_storybookControlType: 'text',
+      },
+      helpTextPosition: {
+        p1_typeSafeDefaultValue: 'after',
+        p2_valueTypeLabel: 'string',
+        p3_description: 'Whether the help text should display before (above), or after (below) the control.',
+        p4_storybookControlType: 'inline-radio',
+        p5_controlOptions: fieldHelpTextPositions,
+      },
+      activeErrorMessage: {
+        p1_typeSafeDefaultValue: undefined,
+        p2_valueTypeLabel: 'string',
+        p3_description: 'A validation message related to the control\'s current error state. This message should help the use identify the problem.',
+        p4_storybookControlType: 'text',
+      },
+      errorMessagePosition: {
+        p1_typeSafeDefaultValue: 'after',
+        p2_valueTypeLabel: 'string',
+        p3_description: 'Whether the error message should display before (above), or after (below) the control.',
+        p4_storybookControlType: 'inline-radio',
+        p5_controlOptions: fieldErrorMessagePositions,
       },
     },
-    helpText: {
-      control: 'text',
-      description: 'Extra information about this field to display to the user.',
-    },
-    helpTextPosition: {
-      control: 'inline-radio',
-      description: 'Whether the help text should display before (above), or after (below) the control.',
-      options: ['before', 'after'],
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    isRequired: {
-      control: 'boolean',
-      description: 'Mandatory fields are marked with an asterisk.',
-    },
-    activeErrorMessage: {
-      control: 'text',
-      description: 'A validation message related to the control\'s current error state. This message should help the use identify the problem.',
-    },
-    errorMessagePosition: {
-      control: 'inline-radio',
-      description: 'Whether the error message should display before (above), or after (below) the control.',
-      options: ['before', 'after'],
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    className: {
-      control: 'text',
-      description: 'Extra CSS classes to apply to the outer element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-  },
+  }),
 };
 
 export default meta;

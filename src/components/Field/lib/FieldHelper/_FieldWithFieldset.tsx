@@ -28,7 +28,7 @@ const _FieldWithFieldset: React.FC<TProps> = ({
 
   return (
     <fieldset className={allClasses} aria-describedby={ariaDescribedBy}>
-      <legend className="visually-hidden">
+      <legend className="u-visually-hidden">
         {label} {isRequired && '(is required)'}
       </legend>
       <div className="c-field__label" aria-hidden="true">

@@ -1,0 +1,12 @@
+/*
+ * _base.scss
+ * 
+ * The base CSS output for a traditional frontend.
+ */
+@use '3-reset' as *;
+@use '4-layers' as *;
+@use '5-generic' as *;
+@use '6-elements' as *;
+@use '7-typography/classes' as *;
+@use '8-foundations/classes' as *;
+@use '9-utilities/classes' as *;

@@ -1,27 +1,23 @@
 import type { Meta } from '@storybook/react';
-import CtaSet from './IconCtaSet';
+import IconCtaSet from './IconCtaSet';
+import createPartialMeta from '../lib/storybook/createPartialMeta';
+import iconCtaLinkMeta from '../IconCta/IconCtaLink/IconCtaLink.stories';
+import iconCtaButtonMeta from '../IconCta/IconCtaButton/IconCtaButton.stories';
 
-const meta: Meta<typeof CtaSet> = {
+const meta: Meta<typeof IconCtaSet> = {
   title: 'Components/IconCtaSet',
-  component: CtaSet,
-  parameters: {
+  ...createPartialMeta({
+    component: IconCtaSet,
     layout: 'centered',
-  },
-  tags: ['autodocs'],
-  args: {
-    children: [],
-    className: undefined,
-  },
-  argTypes: {
-    children: {
-      control: false,
-      description: 'An array of [IconCtaLink](./?path=/docs/components-iconcta-iconctalink--docs) or [IconCtaButton](./?path=/docs/components-iconcta-iconctabutton--docs) components.',
+    fields: {
+      children: {
+        p1_typeSafeDefaultValue: null,
+        p2_valueTypeLabel: 'ReactNode',
+        p3_description: `An array of [${iconCtaLinkMeta.title}] or [${iconCtaButtonMeta.title}] components.`,
+        p4_storybookControlType: 'NOT_SHOWN',
+      },
     },
-    className: {
-      control: 'text',
-      description: 'Extra CSS classes to apply to the outer element.',
-    },
-  },
+  }),
 };
 
 export default meta;

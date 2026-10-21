@@ -1,16 +1,17 @@
 @use './typography' as *;
 
 /*
- *  Defaults for the standard custom properties that are helpful
- *  to calculate padding and more.
+ *  Global default values for use in the styling of
+ *  full controls, e.g. textbox, select, textarea.
+ *  These should be assigned to --height and
+ *  --border-width properties on the element.
  */
 $default-control-border-width: 1px;
-$default-control-line-height: #{$default-line-height-em};
-$default-control-min-height: 2.75rem;
+$default-control-height: 2.75rem;
 
-$-min-height-minus-borders: calc(var(--control-min-height) - (var(--control-border-width) * 2));
-$default-control-calculated-px: calc(($-min-height-minus-borders - 1em) / 2);
-$default-control-calculated-py: calc(($-min-height-minus-borders - var(--control-line-height)) / 2);
+$_height-minus-borders: calc(var(--height) - (var(--border-width) * 2));
+$default-control-padding-x: calc(($_height-minus-borders - 1em) / 2);
+$default-control-padding-y: calc(($_height-minus-borders - 1lh) / 2);
 
 
 /*

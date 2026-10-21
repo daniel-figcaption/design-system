@@ -1,27 +1,23 @@
 import type { Meta } from '@storybook/react';
 import CtaSet from './CtaSet';
+import createPartialMeta from '../lib/storybook/createPartialMeta';
+import ctaLinkMeta from '../Cta/CtaLink/CtaLink.stories';
+import ctaButtonMeta from '../Cta/CtaButton/CtaButton.stories';
 
 const meta: Meta<typeof CtaSet> = {
   title: 'Components/CtaSet',
-  component: CtaSet,
-  parameters: {
+  ...createPartialMeta({
+    component: CtaSet,
     layout: 'centered',
-  },
-  tags: ['autodocs'],
-  args: {
-    children: [],
-    className: undefined,
-  },
-  argTypes: {
-    children: {
-      control: false,
-      description: 'A set of [CtaLink](./?path=/docs/components-cta-ctalink--docs) or [CtaButton](./?path=/docs/components-cta-ctabutton--docs) components.',
+    fields: {
+      children: {
+        p1_typeSafeDefaultValue: null,
+        p2_valueTypeLabel: 'ReactNode',
+        p3_description: `A set of [${ctaLinkMeta.title}] or [${ctaButtonMeta.title}] components.`,
+        p4_storybookControlType: 'NOT_SHOWN',
+      },
     },
-    className: {
-      control: 'text',
-      description: 'Extra CSS classes to apply to the outer element.',
-    },
-  },
+  }),
 };
 
 export default meta;

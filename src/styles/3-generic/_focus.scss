@@ -1,7 +1,0 @@
-@use '../2-tools/default-focus-outline' as *;
-
-@layer generic {
-  :focus-visible {
-    @include default-focus-outline;
-  }
-}

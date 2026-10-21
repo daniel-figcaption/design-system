@@ -9,26 +9,27 @@ import ToggleFieldSet from "../ToggleFieldSet/ToggleFieldSet";
 import assertAsOneOfBase from "../lib/assertAsOneOfBase";
 import FullControlBrand from "../Control/FullControl/FullControlBrand";
 import isElementOfBase from "../lib/isElementOfBase";
+import { TFieldErrorMessagePositions, TFieldHelpTextPositions } from "./lib/types";
 
 export type TFieldComponent = TBaseComponent<{
   label: string;
+  children: React.ReactElement; // TElement<TBaseFullControl | TToggleFieldSetComponent>
   isRequired?: boolean;
   helpText?: string;
-  helpTextPosition?: 'before' | 'after';
+  helpTextPosition?: TFieldHelpTextPositions;
   activeErrorMessage?: string;
-  errorMessagePosition?: 'before' | 'after';
-  children: React.ReactElement; // TElement<TBaseFullControl | TToggleFieldSetComponent>
+  errorMessagePosition?: TFieldErrorMessagePositions;
 }>;
 
 const Field: TFieldComponent = defineComponent(({
   label,
+  children,
   isRequired = false,
   helpText,
   helpTextPosition = 'after',
   activeErrorMessage,
   errorMessagePosition = 'after',
   className,
-  children
 }) => {
   const core = assertAsOneOfBase(children);
 
@@ -51,7 +52,7 @@ const Field: TFieldComponent = defineComponent(({
 
   const requiredFlagEl = isRequired ? (
     <span className="c-field__required-flag">
-      <span className="visually-hidden">(is required)</span>
+      <span className="u-visually-hidden">(is required)</span>
     </span>
   ) : undefined;
 

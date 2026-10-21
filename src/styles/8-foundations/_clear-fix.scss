@@ -1,0 +1,13 @@
+@mixin f-clear-fix {
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+@mixin classes {
+  .f-clear-fix {
+    @include f-clear-fix;
+  }
+}

@@ -45,7 +45,7 @@ const ToggleField: TToggleFieldComponent = defineComponent(({
           {label}
           {isRequired && (
             <span className="c-toggle-field__required-flag">
-              <span className="visually-hidden">(is required)</span>
+              <span className="u-visually-hidden">(is required)</span>
             </span>
           )}
         </label>

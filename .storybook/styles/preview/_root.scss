@@ -1,0 +1,13 @@
+/*
+ * _root.scss
+ *
+ * The root styles for the Storybook preview windows.
+ */
+@use 'variables.module' as *;
+@use '@src/styles/2-mixins/root-styles' as *;
+
+@layer generic {
+  #{$sb-preview-root} {
+    @include root-styles;
+  }
+}

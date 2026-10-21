@@ -1,0 +1,15 @@
+/*
+ * _tools.scss
+ *
+ * This is a library of all the SASS variables, mixins,
+ * and other non-CSS constructs available for use.
+ *
+ * This can be brought into a consuming file (usually a
+ * component) via @use to give it instant access to all
+ * of this project's SASS features.
+ */
+@forward '1-settings';
+@forward '2-mixins';
+@forward '7-typography/tools';
+@forward '8-foundations/tools';
+@forward '9-utilities/tools';
