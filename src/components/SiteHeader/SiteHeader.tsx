@@ -4,6 +4,7 @@ import defineComponent from "../lib/defineComponent";
 import { TBaseComponent } from "../lib/types";
 import SiteLogo from "../SiteLogo/SiteLogo";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import resolveStorybookImageUrl from '../SiteLogo/lib/resolveStorybookLogoUrl';
 
 type TSiteHeaderComponent = TBaseComponent<{
   //
@@ -21,7 +22,7 @@ const SiteHeader: TSiteHeaderComponent = defineComponent(({
     <header className={allClasses}>
       <SiteLogo
         className="c-site-header__logo"
-        imageUrl="/src/assets/logos/mcgill-logo.svg"
+        imageUrl={resolveStorybookImageUrl("mcgill-logo.svg")}
         imageAltText="McGill"
         intrinsicWidth={166}
         intrinsicHeight={44}
