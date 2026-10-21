@@ -10,7 +10,7 @@
   color: $default-fg-color;
   font-family: $default-font-family;
   font-weight: $default-font-weight;
-  line-height: $default-line-height-unitless;
+  line-height: $default-line-height-multiplier;
 
   /*
    * Although this is used mostly in the @container mixin and 
